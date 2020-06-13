@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.terukiss.peekaboo2.helper.JeongLog;
+import com.terukiss.peekaboo2.helper.MessageModel;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -19,6 +20,7 @@ import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.CharBuffer;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private void clickProcess() {
         BufferedReader in = null;
         BufferedWriter out = null;
-
+        ObjectOutputStream oos = null;
 
 
 
@@ -70,11 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
            // in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(1024);
 
             jeongLog.logD("소켓을 테스트 합니다 ");
             out.write(editText.getText() + " \n");
             out.flush();
+
+
+
             byte[] buf = new byte[200];
             socket.getInputStream().read(buf);
            // String receiveStr = in.readLine();

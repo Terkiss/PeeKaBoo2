@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace PeeKaBoo
@@ -9,7 +10,7 @@ namespace PeeKaBoo
     class Program
     {
 
-        static byte[] receiveBytes = new byte[200];
+        static byte[] receiveBytes = new byte[2000];
         static byte[] sendBytes = new byte[200];
         static void Main(string[] args)
         {
@@ -34,14 +35,20 @@ namespace PeeKaBoo
             Console.WriteLine("---------------------------------------");
             
 
-            transferSock.BeginReceive(receiveBytes, 0, 38, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
+            transferSock.BeginReceive(receiveBytes, 0, receiveBytes.Length, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
 
             sendBytes = Encoding.Default.GetBytes("c# server에서 데이터를 보냇어!\r");
             transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
-           
+
             //transferSock.Receive(receiveBytes);
 
-
+            for (int i = 0; i < receiveBytes.Length; i++)
+            {
+                
+               
+                Console.Write(Encoding.Default.GetString(receiveBytes));
+               
+            }
 
 
 
