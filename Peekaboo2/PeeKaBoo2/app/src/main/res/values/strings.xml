@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PeeKaBoo2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="menu_serverlist">ServerList</string>
+    <string name="menu_chat">Chat</string>
+    <string name="menu_personal">Personal</string>
+    <string name="menu_serverSetting">ServerSetting</string>
+</resources>

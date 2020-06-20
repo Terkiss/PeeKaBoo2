@@ -1,0 +1,13 @@
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.exe
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.deps.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.dev.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfoInputs.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfo.cs
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CoreCompileInputs.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_serverlist"
+        android:icon="@drawable/temp_drawable_00"
+        android:title="@string/menu_serverlist"
+        />
+
+    <item
+        android:id="@+id/menu_chat"
+        android:icon="@drawable/temp_drawable_01"
+        android:title="@string/menu_chat"
+        />
+
+    <item
+        android:id="@+id/menu_personal"
+        android:icon="@drawable/temp_drawable_02"
+        android:title="@string/menu_personal"
+        />
+
+    <item
+        android:id="@+id/menu_serverSetting"
+        android:icon="@drawable/temp_drawable_03"
+        android:title="@string/menu_serverSetting"
+        />
+
+</menu>
