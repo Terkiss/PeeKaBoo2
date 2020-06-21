@@ -33,7 +33,7 @@ public class DatabaseManager extends AppCompatActivity {
 
     public DatabaseManager initialization(@NonNull Context context)
     {
-        jeongLog = new JeongLog(getApplicationContext(), "DB");
+        jeongLog = new JeongLog(context, "DB");
 
 
         this.context = context;
@@ -149,7 +149,18 @@ public class DatabaseManager extends AppCompatActivity {
         @Override
         public void onCreate(SQLiteDatabase db)
         {
-            jeongLog.logD("데이터 베이스 생성 성공 ");
+            jeongLog.logD("데이터 베이스 생성은 완료 ");
+            jeongLog.logD("테이블 을 생성할 순서 ");
+
+            jeongLog.logD("커넥션 리스트 테이블 생성");
+            db.execSQL(DataBaseInfo._CreateConnectListTable);
+
+            jeongLog.logD("마지막 연결 테이블 생성");
+            db.execSQL(DataBaseInfo._CreateLastConnectTable);
+
+            jeongLog.logD("유저 정보 테이블을 생성 ");
+            db.execSQL(DataBaseInfo._CreateUserTable);
+
         }
 
         @Override

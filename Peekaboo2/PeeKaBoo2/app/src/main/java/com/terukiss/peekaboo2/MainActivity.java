@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.terukiss.peekaboo2.activity.ContentBindActivity;
-
-
-
+import com.terukiss.peekaboo2.helper.DatabaseManager;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseManager databaseManager;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new Handler().postDelayed(new Runnable() {
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 //startPoint();
 
 
-               // databaseManager = DatabaseManager._Instance.initialization(getApplicationContext());
+                databaseManager = DatabaseManager._Instance.initialization(getApplicationContext());
                 startActivity(intent);
                 finish();
             }
