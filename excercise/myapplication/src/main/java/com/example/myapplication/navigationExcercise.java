@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ public class navigationExcercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_excercise);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("ShowToast")
@@ -31,7 +32,15 @@ public class navigationExcercise extends AppCompatActivity {
                 if(menuItem.getItemId() == R.id.navigation_home )
                 {
                     Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_LONG).show();
-                    Log.d("Jeong", "Home");
+//                    Log.d("Jeong", "Home");
+                    Menu menu = bottomNavigationView.getMenu();
+                    menu.findItem(R.id.navigation_dashboard).setChecked(true);
+
+//
+//                    Log.d("Jeong", menu.size()+"\n");
+//                    menu.getItem(1).setChecked(true);
+                    bottomNavigationView.setSelectedItemId(R.id.navigation_dashboard);
+
                 }
                 else if(menuItem.getItemId() == R.id.navigation_dashboard)
                 {
@@ -44,7 +53,7 @@ public class navigationExcercise extends AppCompatActivity {
                     Log.d("Jeong", "navigation_notifications");
                 }
 
-                return true;
+                return false;
             }
         });
     }

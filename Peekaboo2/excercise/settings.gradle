@@ -1,3 +1,0 @@
-rootProject.name='bottomNavigationActivity'
-include ':app'
-include ':myapplication'

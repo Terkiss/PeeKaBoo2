@@ -14,8 +14,11 @@ namespace PeeKaBoo
         static byte[] sendBytes = new byte[200];
         static void Main(string[] args)
         {
-           
 
+
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(" 클라이언트의 연결을 기다립니다........ ");
+            Console.WriteLine("---------------------------------------");
 
 
             Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
@@ -24,14 +27,6 @@ namespace PeeKaBoo
 
 
             serverSocket.Listen(100);
-
-            
-            Console.WriteLine("---------------------------------------");
-            Console.WriteLine(" 클라이언트의 연결을 기다립니다........ ");
-            Console.WriteLine("---------------------------------------");
-
-
-            Start:
 
             Socket transferSock = serverSocket.Accept();
 
@@ -57,9 +52,7 @@ namespace PeeKaBoo
 
 
 
-            Console.WriteLine("다시 시작함");
-
-            goto Start;
+            Console.WriteLine("어허");
 
 
 

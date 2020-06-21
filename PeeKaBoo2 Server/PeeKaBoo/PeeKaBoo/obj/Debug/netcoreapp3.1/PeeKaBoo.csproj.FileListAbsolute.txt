@@ -10,3 +10,4 @@ F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache
