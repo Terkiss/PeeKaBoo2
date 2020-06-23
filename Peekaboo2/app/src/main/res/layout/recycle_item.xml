@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="90dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,7 +26,8 @@
                 android:id="@+id/recycleItem_ImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/drawable_serverlist_icon_00" />
+                app:srcCompat="@drawable/drawable_serverlist_icon_00"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +75,7 @@
 
             <TextView
                 android:layout_gravity="right"
-                android:id="@+id/time"
+                android:id="@+id/recycleItem_Time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="time"

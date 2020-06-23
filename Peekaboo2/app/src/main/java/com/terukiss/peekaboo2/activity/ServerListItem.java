@@ -31,35 +31,5 @@ public class ServerListItem extends Item
         this.subtext = subtext;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getSmallIconPath() {
-        return smallIconPath;
-    }
-
-    public void setSmallIconPath(String smallIconPath) {
-        this.smallIconPath = smallIconPath;
-    }
-
-    public String getLargeIconPath() {
-        return largeIconPath;
-    }
-
-    public void setLargeIconPath(String largeIconPath) {
-        this.largeIconPath = largeIconPath;
-    }
-
-    public String getPakageName() {
-        return pakageName;
-    }
-
-    public void setPakageName(String pakageName) {
-        this.pakageName = pakageName;
-    }
 }

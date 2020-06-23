@@ -61,7 +61,7 @@ public class DatabaseManager extends AppCompatActivity {
         {
 
             String stt = cursor.getString(1);
-            if( !stt.equals("id"))
+            if( !stt.equals("_id"))
             {
                 columns.add(stt);
             }

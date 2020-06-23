@@ -15,12 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.terukiss.peekaboo2.R;
+import com.terukiss.peekaboo2.helper.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
+import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
 
 import java.io.ObjectStreamException;
 import java.util.ArrayList;
@@ -32,7 +36,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
     private FloatingActionButton fab, fab1, fab2;
     View view = null;
     RecyclerView recyclerView;
-
+    PeekabooAlartDialog alartDialog;
     JeongLog jeongLog = null;
     public Fragment_Server_List() {
         // Required empty public constructor
@@ -86,11 +90,11 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                 anim();
                 //Toast.makeText(getActivity(), "Button1", Toast.LENGTH_SHORT).show();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 // 다이어로그로 빌더로 구움
                 //https://lktprogrammer.tistory.com/155
                // builder.setTitle("어서와 처음이지?").setMessage("버튼 추가 예제야");
-                builder.setTitle("버튼 추가 예제야");
+//                builder.setTitle("버튼 추가 예제야");
 //                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialog, int which) {
@@ -171,38 +175,98 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
 //                });
 
 
-                final String[] items = getResources().getStringArray(R.array.LAN);
-                final ArrayList<String> selectedItem  = new ArrayList<String>();
-                selectedItem.add(items[0]); // 아이템의 첫번쨰를 선택해 놓음
+//                final String[] items = getResources().getStringArray(R.array.LAN);
+//                final ArrayList<String> selectedItem  = new ArrayList<String>();
+//                selectedItem.add(items[0]); // 아이템의 첫번쨰를 선택해 놓음
+//
+//                builder.setTitle("리스트 추가 예제");
+//
+//                // 싱글 초이스 리스너
+//                builder.setSingleChoiceItems(R.array.LAN, 0, new DialogInterface.OnClickListener(){
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int pos)
+//                    {
+//                        selectedItem.clear();
+//                        selectedItem.add(items[pos]);
+//                    }
+//                });
+//
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int pos)
+//                    {
+//                        Toast toast = Toast.makeText(getContext(), "선택된 항목 : " + selectedItem.get(0), Toast.LENGTH_LONG);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
+//                        toast.show();
+//                    }
+//                });
 
-                builder.setTitle("리스트 추가 예제");
+//                View dialogView = getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
+//
+//                final EditText nameEdtText = dialogView.findViewById(R.id.names);
+//                final  EditText nickNameEditText = dialogView.findViewById(R.id.nickname);
+//
+//                builder.setView( dialogView);
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        String name = "이름은 ? "+nameEdtText.getText();
+//                        String nickName ="닉넴은 ? "+nickNameEditText.getText();
+//
+//                        jeongLog.logD(name + nickName);
+//                    }
+//                });
+//
 
-                // 싱글 초이스 리스너
-                builder.setSingleChoiceItems(R.array.LAN, 0, new DialogInterface.OnClickListener(){
+
+
+//
+//
+//                AlertDialog alertDialog = builder.create();
+////                alertDialog.show();
+
+
+                alartDialog = new PeekabooAlartDialog(getContext());
+                alartDialog.setTitle("안녕하세오");
+                alartDialog.dialogCreate("");
+                View view =  getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
+
+                final EditText hostnameEdt = view.findViewById(R.id.hostname);
+                final EditText portEdt = view.findViewById(R.id.port);
+                final EditText serverNickEdt = view.findViewById(R.id.servernick);
+
+
+                alartDialog.customDialogView(view);
+
+                alartDialog.positiveButtonCreate("ok", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int pos)
-                    {
-                        selectedItem.clear();
-                        selectedItem.add(items[pos]);
+                    public void onClick(DialogInterface dialog, int which) {
+                        jeongLog.logD("서버 호스트 주소 : "+hostnameEdt.getText());
+                        jeongLog.logD("서버 포트 번호 : "+portEdt.getText());
+                        jeongLog.logD("서버 별칭 : "+serverNickEdt.getText());
+
+                        jeongLog.logD("로컬 데이터 베이스에 등록 합니다");
+                        if(DatabaseManager._Instance == null)
+                        {
+                            jeongLog.logD("데이터 베이스가 널이므로 엽니다");
+                        }
+                        DatabaseManager databaseManager = DatabaseManager._Instance;
+                        String[] colums = databaseManager.getColumnList(DataBaseInfo._TableConnectList);
+                        databaseManager.insertData(DataBaseInfo._TableConnectList, colums, new String[]{
+                                serverNickEdt.getText().toString(),
+                                hostnameEdt.getText().toString(),
+                                portEdt.getText().toString()
+                        });
+                    }
+                });
+                alartDialog.negativeButtonCreate("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "서버 등록을 취소 했습니다", Toast.LENGTH_LONG).show();
                     }
                 });
 
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int pos)
-                    {
-                        Toast toast = Toast.makeText(getContext(), "선택된 항목 : " + selectedItem.get(0), Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                    }
-                });
-
-
-
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
+                alartDialog.show();
                 jeongLog.logD("floatting add action button activate");
                 break;
             case R.id.fab_del:
