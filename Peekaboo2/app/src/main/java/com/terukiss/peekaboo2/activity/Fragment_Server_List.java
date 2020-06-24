@@ -105,7 +105,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             case R.id.fab_add:
                 anim();
                 alartDialog = new PeekabooAlartDialog(getContext());
-                alartDialog.setTitle("안녕하세오");
+                alartDialog.setTitle("서버 등록");
                 alartDialog.dialogCreate("");
                 View view =  getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
 
@@ -117,6 +117,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                 alartDialog.customDialogView(view);
 
                 alartDialog.positiveButtonCreate("ok", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         jeongLog.logD("서버 호스트 주소 : "+hostnameEdt.getText());
@@ -151,7 +152,48 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             case R.id.fab_del:
                 anim();
                 //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show();
-                jeongLog.logD("floatting delete action button activate");
+                alartDialog = new PeekabooAlartDialog(getContext());
+                alartDialog.setTitle("서버 삭제");
+                alartDialog.dialogCreate("");
+
+                final String[] servernic = new String[serverListItems.size()];
+
+                for(int i = 0 ; i < servernic.length; i++)
+                {
+                    servernic[i] = serverListItems.get(i).getSubtext();
+
+                }
+                final ArrayList<String> select = new ArrayList<>();
+                alartDialog.addSingleChoiseList(servernic, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        select.clear();
+                        select.add(servernic[which]);
+                    }
+                });
+                alartDialog.positiveButtonCreate("ok", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseManager databaseManager = DatabaseManager._Instance;
+                        if(databaseManager == null)
+                        {
+                            databaseManager = DatabaseManager._Instance.initialization(Objects.requireNonNull(getContext()));
+                        }
+                        String temp = select.get(0);
+                        int  index = temp.indexOf(": ");
+                        temp = temp.substring(index+2);
+                        databaseManager.deleteData(DataBaseInfo._TableConnectList, "hostName", temp);
+                        reloadRecycleView();
+                    }
+                });
+                alartDialog.negativeButtonCreate("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alartDialog.show();
                 break;
         }
 

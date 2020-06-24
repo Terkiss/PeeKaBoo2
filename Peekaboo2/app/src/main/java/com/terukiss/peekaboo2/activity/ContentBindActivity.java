@@ -57,8 +57,6 @@ public class ContentBindActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.P)
             @Override
             public void onPageSelected(int position) {
-
-
                 String pagerTitle = (String) viewPager.getAdapter().getPageTitle(position);
                 if(pagerTitle.equals(getString(R.string.menu_serverlist)))
                 {
@@ -96,6 +94,10 @@ public class ContentBindActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 FragmentViewAdapter fragmentViewAdapter = (FragmentViewAdapter) viewPager.getAdapter();
+
+
+
+//                if(item.getItemId() == R.id.menu_serverlist)
                 if(item.toString().equals(getString(R.string.menu_serverlist)))
                 {
 
@@ -108,6 +110,7 @@ public class ContentBindActivity extends AppCompatActivity {
 
                     return true;
                 }
+//                if(item.getItemId() == R.id.menu_chat)
                 if(item.toString().equals(getString(R.string.menu_chat)))
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_chat));
@@ -117,6 +120,7 @@ public class ContentBindActivity extends AppCompatActivity {
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }
+//                if(item.getItemId() == R.id.menu_personal)
                 if(item.toString().equals(getString(R.string.menu_personal)))
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_personal));
@@ -126,6 +130,7 @@ public class ContentBindActivity extends AppCompatActivity {
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }
+//                if(item.getItemId() == R.id.menu_serverSetting)
                 if(item.toString().equals(getString(R.string.menu_serverSetting)))
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_serverSetting));

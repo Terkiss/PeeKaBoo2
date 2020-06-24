@@ -112,7 +112,7 @@ public class DatabaseManager extends AppCompatActivity {
 
     public void deleteData(String _TableName, String fieldName, String data)
     {
-        String sql = "delete from "+_TableName+" where "+fieldName+"="+data+";";
+        String sql = "delete from "+_TableName+" where "+fieldName+"='"+data+"';";
         db.execSQL(sql);
     }
 
