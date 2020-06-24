@@ -3,10 +3,14 @@ package com.terukiss.peekaboo2.activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.DialogCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Gravity;
@@ -28,6 +32,7 @@ import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
 
 import java.io.ObjectStreamException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Fragment_Server_List extends Fragment implements View.OnClickListener {
@@ -35,20 +40,21 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
 
     private FloatingActionButton fab, fab1, fab2;
     View view = null;
+    ArrayList<ServerListItem> serverListItems = new ArrayList<>();
     RecyclerView recyclerView;
+    MyRecyclerViewAdapter adapter;
     PeekabooAlartDialog alartDialog;
     JeongLog jeongLog = null;
     public Fragment_Server_List() {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,6 +77,16 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             fab1.setOnClickListener(this);
             fab2.setOnClickListener(this);
 
+            adapter = new MyRecyclerViewAdapter(serverListItems, getContext());
+
+            reloadRecycleView();
+
+            recyclerView = view.findViewById(R.id.serverList_RecyclerView);
+            jeongLog.logD("여기 됩니까?");
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            recyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         }
 
         return view;
@@ -88,144 +104,6 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                 break;
             case R.id.fab_add:
                 anim();
-                //Toast.makeText(getActivity(), "Button1", Toast.LENGTH_SHORT).show();
-
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                // 다이어로그로 빌더로 구움
-                //https://lktprogrammer.tistory.com/155
-               // builder.setTitle("어서와 처음이지?").setMessage("버튼 추가 예제야");
-//                builder.setTitle("버튼 추가 예제야");
-//                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        jeongLog.logD("긍정의 버튼 눌림");
-//                    }
-//                });
-//                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        jeongLog.logD("부정의 버튼 눌림 "+which);
-//                    }
-//                });
-//
-//                builder.setNeutralButton("????", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        jeongLog.logD("이건 뭔 버튼 일까?");
-//                    }
-//                });
-
-
-
-//                builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String[] items = getResources().getStringArray(R.array.LAN);
-//
-//                        jeongLog.logD("목록 아이템 which value :: "+which+"  item :: "+items[which]);
-//                    }
-//                });
-
-
-//
-//                final ArrayList<String> selectedItems = new ArrayList<String>();
-//
-//                final String[] items = getResources().getStringArray(R.array.LAN);
-//
-//                builder.setTitle("리스트 추가 예제");
-//
-//                builder.setMultiChoiceItems(R.array.LAN, null, new DialogInterface.OnMultiChoiceClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int pos, boolean isChecked)
-//                    {
-//                        if(isChecked == true) // Checked 상태일 때 추가
-//                        {
-//                            selectedItems.add(items[pos]);
-//                        }
-//                        else				  // Check 해제 되었을 때 제거
-//                        {
-//                            for(int i = 0; i< selectedItems.size(); i++)
-//                            {
-//                               Object object = selectedItems.get(i);
-//                               if(object.equals(items[pos]))
-//                               {
-//                                   selectedItems.remove(i);
-//                               }
-//                            }
-//
-//                        }
-//                    }
-//                });
-//
-//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int pos)
-//                    {
-//                        String SeletedItemsString = "";
-//
-//                        for(int i =0; i<selectedItems.size();i++)
-//                        {
-//                            SeletedItemsString =  SeletedItemsString + "," + selectedItems.get(i);
-//                        }
-//
-//                        Toast toast = Toast.makeText(getContext(), "선택 된 항목은 :" + SeletedItemsString,Toast.LENGTH_LONG);
-//                        toast.setGravity(Gravity.CENTER, 0, 0);
-//                        toast.show();
-//                    }
-//                });
-
-
-//                final String[] items = getResources().getStringArray(R.array.LAN);
-//                final ArrayList<String> selectedItem  = new ArrayList<String>();
-//                selectedItem.add(items[0]); // 아이템의 첫번쨰를 선택해 놓음
-//
-//                builder.setTitle("리스트 추가 예제");
-//
-//                // 싱글 초이스 리스너
-//                builder.setSingleChoiceItems(R.array.LAN, 0, new DialogInterface.OnClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int pos)
-//                    {
-//                        selectedItem.clear();
-//                        selectedItem.add(items[pos]);
-//                    }
-//                });
-//
-//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int pos)
-//                    {
-//                        Toast toast = Toast.makeText(getContext(), "선택된 항목 : " + selectedItem.get(0), Toast.LENGTH_LONG);
-//                        toast.setGravity(Gravity.CENTER, 0, 0);
-//                        toast.show();
-//                    }
-//                });
-
-//                View dialogView = getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
-//
-//                final EditText nameEdtText = dialogView.findViewById(R.id.names);
-//                final  EditText nickNameEditText = dialogView.findViewById(R.id.nickname);
-//
-//                builder.setView( dialogView);
-//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String name = "이름은 ? "+nameEdtText.getText();
-//                        String nickName ="닉넴은 ? "+nickNameEditText.getText();
-//
-//                        jeongLog.logD(name + nickName);
-//                    }
-//                });
-//
-
-
-
-//
-//
-//                AlertDialog alertDialog = builder.create();
-////                alertDialog.show();
-
-
                 alartDialog = new PeekabooAlartDialog(getContext());
                 alartDialog.setTitle("안녕하세오");
                 alartDialog.dialogCreate("");
@@ -257,6 +135,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                                 hostnameEdt.getText().toString(),
                                 portEdt.getText().toString()
                         });
+                        reloadRecycleView();
                     }
                 });
                 alartDialog.negativeButtonCreate("취소", new DialogInterface.OnClickListener() {
@@ -297,5 +176,37 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             fab2.setClickable(true);
             isFabOpen = true;
         }
+    }
+
+    // Todo 나중에 여기부분을 수정해야함 지금은 할떄마다 데이터 베이스를 읽음
+    // 딱히 지금은 안해도 상관이 없어서 그냥 나둠
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void reloadRecycleView()
+    {
+        serverListItems.clear();
+        DatabaseManager databaseManager = DatabaseManager._Instance;
+        if(databaseManager == null)
+        {
+            databaseManager = DatabaseManager._Instance.initialization(Objects.requireNonNull(getContext()));
+        }
+        Cursor curor = databaseManager.selectData("select * from "+DataBaseInfo._TableConnectList+";");
+        while(curor.moveToNext())
+        {
+            String serverNick = curor.getString(1);
+            String hostName = curor.getString(2);
+            String port = curor.getString(3);
+
+            ServerListItem serverListItem = new ServerListItem();
+            serverListItem.title = "주소 : "+hostName;
+            serverListItem.text = "포트번호 : "+port;
+            serverListItem.subtext = "이름 : "+serverNick;
+
+            serverListItems.add(serverListItem);
+
+            jeongLog.logD(" \n"+serverNick+", \n"+hostName+", \n"+port);
+        }
+        adapter.setItem(serverListItems);
+        adapter.notifyDataSetChanged();
+
     }
 }

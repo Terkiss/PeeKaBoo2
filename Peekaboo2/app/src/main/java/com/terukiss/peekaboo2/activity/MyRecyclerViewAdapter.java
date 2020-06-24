@@ -13,6 +13,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.terukiss.peekaboo2.R;
+import com.terukiss.peekaboo2.helper.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.JeongLog;
 
 import java.util.ArrayList;
 
@@ -20,12 +22,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 {
 
     ArrayList<ServerListItem> items;
-
-    public MyRecyclerViewAdapter(ArrayList<ServerListItem> items)
+    Context context;
+    public MyRecyclerViewAdapter(ArrayList<ServerListItem> items, Context context)
+    {
+        this.items = items;
+        this.context = context;
+    }
+    public void setItem(ArrayList<ServerListItem> items)
     {
         this.items = items;
     }
-
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @NonNull
@@ -59,7 +65,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
 
@@ -72,6 +78,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             title = itemView.findViewById(R.id.recycleItem_Title);
             text = itemView.findViewById(R.id.recycleItem_Text);
             subtext = itemView.findViewById(R.id.recycleItem_Subtext);
@@ -80,7 +87,39 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("FragmentTest", v.toString()+"d");
+
+                    Log.d("FragmentTest", "title = "+title.getText());
+                    Log.d("FragmentTest", "text = "+text.getText());
+                    Log.d("FragmentTest", "subtext = "+subtext.getText());
+
+                    String temp = title.getText().toString();
+
+                    int index = temp.indexOf(": ");
+
+                    // 주소 부분
+                    ConnectionInfo.ServerHostName = temp.substring(index+2);
+
+                    // 포트 부분
+                    temp = text.getText().toString();
+                    index = temp.indexOf(": ");
+                    ConnectionInfo.ServerPort =temp.substring(index+2);
+
+                    // 서버 애칭 부분
+                    temp = subtext.getText().toString();
+                    index = temp.indexOf(": ");
+                    ConnectionInfo.ServerNick =temp.substring(index+2);
+
+                    Log.d("FragmentTest", "ServerHostName :"+ConnectionInfo.ServerHostName);
+                    Log.d("FragmentTest", "ServerPort :"+ConnectionInfo.ServerPort);
+                    Log.d("FragmentTest", "ServerNick :"+ConnectionInfo.ServerNick);
+
+                    Toast.makeText(context,ConnectionInfo.ServerHostName+" 서버로 연결이 재설정 되었습니다", Toast.LENGTH_LONG ).show();
+
+//                    ConnectionInfo.ServerHostName = title.getText().toString();
+//
+//                    ConnectionInfo.ServerPort = text.getText().toString();
+//
+//                    ConnectionInfo.ServerNick = subtext.getText().toString();
                 }
             });
         }

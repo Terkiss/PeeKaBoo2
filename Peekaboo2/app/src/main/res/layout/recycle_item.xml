@@ -41,11 +41,10 @@
                 android:id="@+id/recycleItem_Subtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nanumpen"
                 android:singleLine="true"
-                android:text="방이름"
-                android:layout_marginBottom="5dp"
-                />
+                android:text="방이름" />
 
             <TextView
                 android:id="@+id/recycleItem_Title"
