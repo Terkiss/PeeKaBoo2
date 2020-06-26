@@ -4,25 +4,25 @@
     <item
         android:id="@+id/menu_serverlist"
         android:icon="@drawable/drawable_ic_bottum_menu_00"
-        android:title="@string/menu_serverlist"
+        android:title=""
         />
 
     <item
         android:id="@+id/menu_chat"
         android:icon="@drawable/drawable_ic_bottum_menu_01"
-        android:title="@string/menu_chat"
+        android:title=""
         />
 
     <item
         android:id="@+id/menu_personal"
         android:icon="@drawable/drawable_ic_bottum_menu_02"
-        android:title="@string/menu_personal"
+        android:title=""
         />
 
     <item
         android:id="@+id/menu_serverSetting"
         android:icon="@drawable/drawable_ic_bottum_menu_03"
-        android:title="@string/menu_serverSetting"
+        android:title=""
         />
 
 </menu>

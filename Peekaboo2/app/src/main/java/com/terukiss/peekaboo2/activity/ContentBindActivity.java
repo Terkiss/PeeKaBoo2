@@ -47,7 +47,8 @@ public class ContentBindActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.nav_view);
 
 
-
+        // Todo 뷰페이저의 페이지 체인지 리스너
+        // 지금은 이상이 없지만 좀더 깔끔한 방법을 찾아야함
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -88,55 +89,36 @@ public class ContentBindActivity extends AppCompatActivity {
 
 
 
-
+        // 처음 문자로 타이밍을 잡았던것을 id  값으로 잡게끔 변경
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 FragmentViewAdapter fragmentViewAdapter = (FragmentViewAdapter) viewPager.getAdapter();
 
-
-
-//                if(item.getItemId() == R.id.menu_serverlist)
-                if(item.toString().equals(getString(R.string.menu_serverlist)))
+                if(item.getItemId() == R.id.menu_serverlist)
                 {
-
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_serverlist));
-
                     viewPager.setCurrentItem(position, true);
-
-                    jeongLog.logD("포지션 값 :: "+position);
-                    jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
-
                     return true;
                 }
-//                if(item.getItemId() == R.id.menu_chat)
-                if(item.toString().equals(getString(R.string.menu_chat)))
+                if(item.getItemId() == R.id.menu_chat)
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_chat));
-
                     viewPager.setCurrentItem(position, true);
-
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }
-//                if(item.getItemId() == R.id.menu_personal)
-                if(item.toString().equals(getString(R.string.menu_personal)))
+                if(item.getItemId() == R.id.menu_personal)
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_personal));
-
                     viewPager.setCurrentItem(position, true);
-
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }
-//                if(item.getItemId() == R.id.menu_serverSetting)
-                if(item.toString().equals(getString(R.string.menu_serverSetting)))
+                if(item.getItemId() == R.id.menu_serverSetting)
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_serverSetting));
-
                     viewPager.setCurrentItem(position, true);
-
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }

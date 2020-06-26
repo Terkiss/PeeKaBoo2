@@ -94,6 +94,8 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
 
 
 
+    // Todo 여기는 프로팅 버튼의 리스너
+    // 추후에 정리가 필요함!
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
@@ -151,7 +153,6 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                 break;
             case R.id.fab_del:
                 anim();
-                //Toast.makeText(getActivity(), "Button2", Toast.LENGTH_SHORT).show();
                 alartDialog = new PeekabooAlartDialog(getContext());
                 alartDialog.setTitle("서버 삭제");
                 alartDialog.dialogCreate("");
