@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class PeekabooAlartDialog {
 
     Context context;
-    private String title = "default";
+    private String title = "";
     ArrayList<String> selectionList = new ArrayList<>();
     ArrayList<String> selectedItem = new ArrayList<>();
 

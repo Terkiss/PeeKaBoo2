@@ -1,19 +1,15 @@
 package com.terukiss.peekaboo2.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.app.DialogCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +26,6 @@ import com.terukiss.peekaboo2.helper.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
 import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
 
-import java.io.ObjectStreamException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -38,7 +33,7 @@ import java.util.Objects;
 public class Fragment_Server_List extends Fragment implements View.OnClickListener {
 
 
-    private FloatingActionButton fab, fab1, fab2;
+    private FloatingActionButton fabBtn, fabAdd, fabDel;
     View view = null;
     ArrayList<ServerListItem> serverListItems = new ArrayList<>();
     RecyclerView recyclerView;
@@ -68,14 +63,14 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             fab_open = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_open);
             fab_close = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_close);
 
-            fab = view.findViewById(R.id.fab);
-            fab1 = view.findViewById(R.id.fab_add);
-            fab2 = view.findViewById(R.id.fab_del);
+            fabBtn = view.findViewById(R.id.fab);
+            fabAdd = view.findViewById(R.id.fab_add);
+            fabDel = view.findViewById(R.id.fab_del);
 
 
-            fab.setOnClickListener(this);
-            fab1.setOnClickListener(this);
-            fab2.setOnClickListener(this);
+            fabBtn.setOnClickListener(this);
+            fabAdd.setOnClickListener(this);
+            fabDel.setOnClickListener(this);
 
             adapter = new MyRecyclerViewAdapter(serverListItems, getContext());
 
@@ -107,9 +102,8 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             case R.id.fab_add:
                 anim();
                 alartDialog = new PeekabooAlartDialog(getContext());
-                alartDialog.setTitle("서버 등록");
-                alartDialog.dialogCreate("");
-                View view =  getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
+                alartDialog.dialogCreate("서버등록");
+                View view =  getLayoutInflater().inflate(R.layout.custom_dialog_01, null, false);
 
                 final EditText hostnameEdt = view.findViewById(R.id.hostname);
                 final EditText portEdt = view.findViewById(R.id.port);
@@ -177,10 +171,24 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DatabaseManager databaseManager = DatabaseManager._Instance;
+
                         if(databaseManager == null)
                         {
                             databaseManager = DatabaseManager._Instance.initialization(Objects.requireNonNull(getContext()));
                         }
+                        jeongLog.logD("serverListItems size"+serverListItems.size());
+                        if(serverListItems.size() != 0)
+                        {
+                            if(select.size() == 0)
+                            {
+                                select.add(servernic[0]);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+
                         String temp = select.get(0);
                         int  index = temp.indexOf(": ");
                         temp = temp.substring(index+2);
@@ -207,16 +215,16 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
     public void anim() {
 
         if (isFabOpen) {
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
-            fab1.setClickable(false);
-            fab2.setClickable(false);
+            fabAdd.startAnimation(fab_close);
+            fabDel.startAnimation(fab_close);
+            fabAdd.setClickable(false);
+            fabDel.setClickable(false);
             isFabOpen = false;
         } else {
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
-            fab1.setClickable(true);
-            fab2.setClickable(true);
+            fabAdd.startAnimation(fab_open);
+            fabDel.startAnimation(fab_open);
+            fabAdd.setClickable(true);
+            fabDel.setClickable(true);
             isFabOpen = true;
         }
     }
