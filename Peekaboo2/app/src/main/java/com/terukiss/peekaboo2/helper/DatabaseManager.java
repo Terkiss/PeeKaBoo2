@@ -119,7 +119,6 @@ public class DatabaseManager extends AppCompatActivity {
     public void deleteDataForTable(String _TableName)
     {
         String sql = "DELETE FROM "+_TableName+";";
-
         executeSQL(sql);
     }
 

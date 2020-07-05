@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gPZGyUSgEtte03C9bF+isAVd1S6knRRigyGM7AuzG2Tpb2xtdhF471hZHgVdeXpd2FMF2yxTcizJ2hg5XOVnHQ==",
+  "success": true,
+  "projectFilePath": "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\sqlsql\\sqlsql\\sqlsql.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jeong\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

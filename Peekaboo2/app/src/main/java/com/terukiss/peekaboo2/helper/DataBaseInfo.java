@@ -13,8 +13,8 @@ public class DataBaseInfo {
     // sql 크리에이터 문
 
 
-    public static final String _CreateConnectListTable = "Create table connectListTBL(_id INTEGER, hostName varchar(30), hostAddress varchar(30), port varchar(30), PRIMARY KEY(\"_id\" AUTOINCREMENT))";
-    public static final String _CreateLastConnectTable = "Create table lastConnectTBL(hostName varchar(30), hostAddress varchar(30), port varchar(30))";
+    public static final String _CreateConnectListTable = "Create table connectListTBL(_id INTEGER, hostNick varchar(60), hostAddress varchar(60), port varchar(30), PRIMARY KEY(\"_id\" AUTOINCREMENT))";
+    public static final String _CreateLastConnectTable = "Create table lastConnectTBL(hostNick varchar(60), hostAddress varchar(60), port varchar(60))";
     public static final String _CreateUserTable = "Create table userTBL(uuid varchar(60), picturePath varchar(100))";
 
 

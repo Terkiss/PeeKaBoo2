@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.terukiss.peekaboo2.R;
+import com.terukiss.peekaboo2.helper.ConnectionInfo;
 import com.terukiss.peekaboo2.helper.DataBaseInfo;
 import com.terukiss.peekaboo2.helper.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
@@ -67,6 +68,17 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             fabAdd = view.findViewById(R.id.fab_add);
             fabDel = view.findViewById(R.id.fab_del);
 
+            FloatingActionButton fab_view = view.findViewById(R.id.fab_view);
+
+            fab_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    jeongLog.logD("커넷션 관리 클래스 뷰");
+                    jeongLog.logD(ConnectionInfo.ServerNick);
+                    jeongLog.logD(ConnectionInfo.ServerHostName);
+                    jeongLog.logD(ConnectionInfo.ServerPort);
+                }
+            });
 
             fabBtn.setOnClickListener(this);
             fabAdd.setOnClickListener(this);
@@ -87,8 +99,9 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
         return view;
     }
 
-
-
+    EditText hostnameEdt;
+    EditText portEdt;
+    EditText serverNickEdt;
     // Todo 여기는 프로팅 버튼의 리스너
     // 추후에 정리가 필요함!
     public void onClick(View v) {
@@ -103,13 +116,14 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                 anim();
                 alartDialog = new PeekabooAlartDialog(getContext());
                 alartDialog.dialogCreate("서버등록");
-                View view =  getLayoutInflater().inflate(R.layout.custom_dialog_01, null, false);
+                View view =  getLayoutInflater().inflate(R.layout.custom_dialog_00, null, false);
 
-                final EditText hostnameEdt = view.findViewById(R.id.hostname);
-                final EditText portEdt = view.findViewById(R.id.port);
-                final EditText serverNickEdt = view.findViewById(R.id.servernick);
-
-
+                hostnameEdt = view.findViewById(R.id.hostname);
+                portEdt = view.findViewById(R.id.port);
+                serverNickEdt = view.findViewById(R.id.servernick);
+                jeongLog.logD("hostnameEdt"+hostnameEdt.getText());
+                jeongLog.logD("portEdt?"+portEdt.getText());
+                jeongLog.logD("serverNickEdt"+serverNickEdt.getText());
                 alartDialog.customDialogView(view);
 
                 alartDialog.positiveButtonCreate("ok", new DialogInterface.OnClickListener() {
@@ -189,10 +203,22 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
                             return;
                         }
 
+                        // 서버닉
                         String temp = select.get(0);
                         int  index = temp.indexOf(": ");
                         temp = temp.substring(index+2);
-                        databaseManager.deleteData(DataBaseInfo._TableConnectList, "hostName", temp);
+
+                        if(temp.equals(ConnectionInfo.ServerNick))
+                        {
+                            // 삭제하는 서버가 현재 접속 을 하는 서버로 설정 되 있을경우
+
+                            // 데이터 베이스 마지막 연결 관련 테이블 데이터 삭제
+                            databaseManager.deleteDataForTable(DataBaseInfo._TableLastConnect);
+
+                            ConnectionInfo.CLEAN();
+
+                        }
+                        databaseManager.deleteData(DataBaseInfo._TableConnectList, "hostNick", temp);
                         reloadRecycleView();
                     }
                 });

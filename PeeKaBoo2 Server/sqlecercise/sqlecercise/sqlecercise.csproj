@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>C:\Program Files\System.Data.SQLite\2015\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Designer">
+      <HintPath>C:\Program Files\System.Data.SQLite\2015\bin\SQLite.Designer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>bin\Debug\netcoreapp3.1\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\..\..\자료\sqlite-netStandard21-binary-1.0.113.0\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>C:\Program Files\System.Data.SQLite\2015\bin\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="testef6">
+      <HintPath>..\..\..\자료\sqlite-netStandard21-binary-1.0.113.0\testef6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

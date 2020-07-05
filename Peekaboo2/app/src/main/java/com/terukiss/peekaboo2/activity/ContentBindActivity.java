@@ -14,8 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.terukiss.peekaboo2.R;
+import com.terukiss.peekaboo2.helper.ConnectionInfo;
 import com.terukiss.peekaboo2.helper.JeongLog;
 
 public class ContentBindActivity extends AppCompatActivity {
@@ -66,6 +68,10 @@ public class ContentBindActivity extends AppCompatActivity {
                 else if(pagerTitle.equals(getString(R.string.menu_chat)))
                 {
                     bottomNavigationView.setSelectedItemId(R.id.menu_chat);
+                    if(ConnectionInfo.ServerNick.length() < 1)
+                    {
+                        Snackbar.make(viewPager, "채팅 서버 연결을 확인 하세요",Snackbar.LENGTH_LONG).show();
+                    }
                 }
                 else if(pagerTitle.equals(getString(R.string.menu_personal)))
                 {
@@ -105,6 +111,11 @@ public class ContentBindActivity extends AppCompatActivity {
                 {
                     int position = fragmentViewAdapter.findPosition(getString(R.string.menu_chat));
                     viewPager.setCurrentItem(position, true);
+                    if(ConnectionInfo.ServerNick.length() < 1)
+                    {
+                        Snackbar.make(viewPager, "채팅 서버 연결을 확인 하세요",Snackbar.LENGTH_LONG).show();
+                    }
+
                     jeongLog.logD("MenuItem "+item.toString()+"  "+item.getItemId());
                     return true;
                 }

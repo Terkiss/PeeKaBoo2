@@ -14,11 +14,9 @@ import com.terukiss.peekaboo2.R;
 public class Fragment_Setting extends Fragment {
 
 
-    public Fragment_Setting() {
-        // Required empty public constructor
+    public Fragment_Setting()
+    {
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,6 @@ public class Fragment_Setting extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment__setting, container, false);
     }
 }

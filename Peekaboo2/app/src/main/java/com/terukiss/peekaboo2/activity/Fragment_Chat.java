@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.terukiss.peekaboo2.R;
 import com.terukiss.peekaboo2.helper.JeongLog;
 import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
@@ -39,6 +40,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         if(view == null)
         {
             jeongLog = new JeongLog("FragmentTest");
@@ -51,6 +53,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
             recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
         }
+
         return view;
     }
 

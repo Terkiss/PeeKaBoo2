@@ -23,6 +23,7 @@ public class ServerListItem extends Item
         this.text = text;
     }
 
+    // 닉네임
     public String getSubtext() {
         return subtext;
     }

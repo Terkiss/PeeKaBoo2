@@ -1,5 +1,6 @@
 package com.terukiss.peekaboo2.activity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.terukiss.peekaboo2.R;
 import com.terukiss.peekaboo2.helper.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
 
 import java.util.ArrayList;
@@ -87,9 +90,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    // 타이틀은 호스트 네임
                     Log.d("FragmentTest", "title = "+title.getText());
+                    // 텍스는 포트번호
                     Log.d("FragmentTest", "text = "+text.getText());
+                    // 서브 텍스트는  닉넴
                     Log.d("FragmentTest", "subtext = "+subtext.getText());
 
                     String temp = title.getText().toString();
@@ -114,6 +119,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                     Log.d("FragmentTest", "ServerNick :"+ConnectionInfo.ServerNick);
 
                     Toast.makeText(context,ConnectionInfo.ServerHostName+" 서버로 연결이 재설정 되었습니다", Toast.LENGTH_LONG ).show();
+
+
+
+                    DatabaseManager databaseManager = DatabaseManager._Instance;
+                    ContentValues contentValues = new ContentValues();
+
+                    contentValues.put("hostNick", ConnectionInfo.ServerNick);
+                    contentValues.put("hostAddress", ConnectionInfo.ServerHostName);
+                    contentValues.put("port", ConnectionInfo.ServerPort);
+
+                    databaseManager.deleteDataForTable(DataBaseInfo._TableLastConnect);
+                    databaseManager.insertData(DataBaseInfo._TableLastConnect, null, contentValues);
+
 
 //                    ConnectionInfo.ServerHostName = title.getText().toString();
 //
