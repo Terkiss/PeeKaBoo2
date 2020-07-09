@@ -11,6 +11,8 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
+import java.util.Random;
+
 public class UuidGets {
 
     Context context;
@@ -68,6 +70,9 @@ public class UuidGets {
                         jeongLog.logD(telNumber);
                         telNumber = telNumber.replace("+82", "0");
                         telNumber = telNumber +"@";
+                        Random random = new Random();
+                        int r = random.nextInt(999999999);
+                        telNumber += r;
                         jeongLog.logD("sim check, Tel No, " + telNumber);
                         break;
                 }
@@ -77,9 +82,7 @@ public class UuidGets {
                 jeongLog.logD("sim check, Exception: "+e.toString());
                 e.printStackTrace();
             }
-
         }
-
         return telNumber;
     }
 }

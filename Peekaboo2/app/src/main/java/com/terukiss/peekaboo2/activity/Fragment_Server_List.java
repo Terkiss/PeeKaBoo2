@@ -267,6 +267,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             databaseManager = DatabaseManager._Instance.initialization(Objects.requireNonNull(getContext()));
         }
         Cursor curor = databaseManager.selectData("select * from "+DataBaseInfo._TableConnectList+";");
+        jeongLog.logD("데이터 베이스 getCount ::  "+curor.getCount());
         while(curor.moveToNext())
         {
             String serverNick = curor.getString(1);

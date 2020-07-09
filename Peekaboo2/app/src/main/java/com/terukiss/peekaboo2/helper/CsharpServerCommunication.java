@@ -56,64 +56,97 @@ public class CsharpServerCommunication {
 //            e.printStackTrace();
 //        }
 //    }
+    
     public Socket serverConnect() throws IOException
     {
-        return new Socket("hotlinedeahet.iptime.org", 10000);
+        int portNum =Integer.parseInt(ConnectionInfo.ServerPort);
+        return new Socket(ConnectionInfo.ServerHostName, 10000);
     }
 
-    public void sendCsharpServer(String data)
+
+    public void sendCsharpServer(final String data)
     {
-        BufferedWriter out = null;
-        try{
-            Socket server = serverConnect();
-            out = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
+        final String sendData = data;
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BufferedWriter out = null;
+                try{
+                    Socket server = serverConnect();
+                    out = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
 
-            out.write(data + " \n");
-            out.flush();
+                    out.write(sendData + " \n");
+                    out.flush();
 
-            out.close();
-            server.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+                    out.close();
+                    server.close();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        thread.start();
+
+
+
 
 
     }
+
+
+
     public void receiveCsharpServer()
     {
-        BufferedReader in = null;
-        try {
-            Socket server = serverConnect();
 
-            byte[] buf = new byte[2000];
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(2000);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-            server.getInputStream().read(buf);
+                BufferedReader in = null;
+                try {
+                    Socket server = serverConnect();
 
-            String receiveData = "";
-            for (int i = 0; i < buf.length; i++)
-            {
-                jeongLog.logD(i+"어허"+receiveData);
-                jeongLog.logD("버퍼 데이터"+buf[i]);
-                if(buf[i]==0)
-                {
-                    byteArrayOutputStream.write(buf, 0, i-1);
-                    receiveData += byteArrayOutputStream.toString("UTF-8");
-                    jeongLog.logD("임시적 데이터 결과 :  "+byteArrayOutputStream.toString("UTF-8"));
-                    break;
+                    byte[] buf = new byte[2000];
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(2000);
+
+                    server.getInputStream().read(buf);
+
+                    String receiveData = "";
+                    for (int i = 0; i < buf.length; i++)
+                    {
+                        jeongLog.logD(i+"어허"+receiveData);
+                        jeongLog.logD("버퍼 데이터"+buf[i]);
+                        if(buf[i]==0)
+                        {
+                            byteArrayOutputStream.write(buf, 0, i-1);
+                            receiveData += byteArrayOutputStream.toString("UTF-8");
+                            jeongLog.logD("임시적 데이터 결과 :  "+byteArrayOutputStream.toString("UTF-8"));
+                            break;
+                        }
+                    }
+                    jeongLog.logD("최종 받은 데이터 결과 : "+receiveData) ;
+
+                    byteArrayOutputStream.close();
+                    server.close();
                 }
-            }
-            jeongLog.logD("최종 받은 데이터 결과 : "+receiveData) ;
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
 
-            byteArrayOutputStream.close();
-            server.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+            }
+        });
+
+        thread.start();
+
+
+
 
     }
+
+
 }
