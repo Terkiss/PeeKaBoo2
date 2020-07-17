@@ -56,7 +56,7 @@ public class CsharpServerCommunication {
 //            e.printStackTrace();
 //        }
 //    }
-    
+
     public Socket serverConnect() throws IOException
     {
         int portNum =Integer.parseInt(ConnectionInfo.ServerPort);
@@ -71,6 +71,8 @@ public class CsharpServerCommunication {
             @Override
             public void run() {
                 BufferedWriter out = null;
+
+                BufferedReader in = null;
                 try{
                     Socket server = serverConnect();
                     out = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
@@ -78,8 +80,37 @@ public class CsharpServerCommunication {
                     out.write(sendData + " \n");
                     out.flush();
 
+
+
+                    // 리시브 부분
+                    byte[] buf = new byte[2000];
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(2000);
+
+                    server.getInputStream().read(buf);
+
+                    String receiveData = "";
+                    for (int i = 0; i < buf.length; i++)
+                    {
+                        jeongLog.logD(i+"어허"+receiveData);
+                        jeongLog.logD("버퍼 데이터"+buf[i]);
+                        if(buf[i]==0)
+                        {
+                            byteArrayOutputStream.write(buf, 0, i-1);
+                            receiveData += byteArrayOutputStream.toString("UTF-8");
+                            jeongLog.logD("임시적 데이터 결과 :  "+byteArrayOutputStream.toString("UTF-8"));
+                            break;
+                        }
+                    }
+                    jeongLog.logD("최종 받은 데이터 결과 : "+receiveData) ;
+
+
+
+                    byteArrayOutputStream.close();
                     out.close();
                     server.close();
+
+
+
                 }
                 catch (IOException e)
                 {

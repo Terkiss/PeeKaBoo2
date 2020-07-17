@@ -10,4 +10,13 @@ F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\EntityFramework.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Designer.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.Linq.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\testef6.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.xml
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CopyComplete
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Interop.dll
 F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache

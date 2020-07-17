@@ -7,8 +7,64 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "PeeKaBoo/1.0.0": {
+        "dependencies": {
+          "EntityFramework": "6.0.0.0",
+          "SQLite.Designer": "1.0.113.0",
+          "System.Data.SQLite": "1.0.113.0",
+          "System.Data.SQLite.EF6": "1.0.113.0",
+          "System.Data.SQLite.Linq": "1.0.113.0",
+          "testef6": "1.0.113.0"
+        },
         "runtime": {
           "PeeKaBoo.dll": {}
+        }
+      },
+      "EntityFramework/6.0.0.0": {
+        "runtime": {
+          "EntityFramework.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.2.61023.0"
+          }
+        }
+      },
+      "SQLite.Designer/1.0.113.0": {
+        "runtime": {
+          "SQLite.Designer.dll": {
+            "assemblyVersion": "1.0.113.0",
+            "fileVersion": "1.0.113.0"
+          }
+        }
+      },
+      "System.Data.SQLite/1.0.113.0": {
+        "runtime": {
+          "System.Data.SQLite.dll": {
+            "assemblyVersion": "1.0.113.0",
+            "fileVersion": "1.0.113.0"
+          }
+        }
+      },
+      "System.Data.SQLite.EF6/1.0.113.0": {
+        "runtime": {
+          "System.Data.SQLite.EF6.dll": {
+            "assemblyVersion": "1.0.113.0",
+            "fileVersion": "1.0.113.0"
+          }
+        }
+      },
+      "System.Data.SQLite.Linq/1.0.113.0": {
+        "runtime": {
+          "System.Data.SQLite.Linq.dll": {
+            "assemblyVersion": "1.0.113.0",
+            "fileVersion": "1.0.113.0"
+          }
+        }
+      },
+      "testef6/1.0.113.0": {
+        "runtime": {
+          "testef6.dll": {
+            "assemblyVersion": "1.0.113.0",
+            "fileVersion": "1.0.113.0"
+          }
         }
       }
     }
@@ -16,6 +72,36 @@
   "libraries": {
     "PeeKaBoo/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntityFramework/6.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SQLite.Designer/1.0.113.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SQLite/1.0.113.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SQLite.EF6/1.0.113.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.SQLite.Linq/1.0.113.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "testef6/1.0.113.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

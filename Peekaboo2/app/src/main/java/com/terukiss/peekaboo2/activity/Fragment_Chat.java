@@ -55,8 +55,17 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
             recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
-        }
+            CsharpServerCommunication send = new CsharpServerCommunication("Communication");
 
+            String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
+
+            //send.sendCsharpServer(command);
+
+
+        }
+        CsharpServerCommunication send = new CsharpServerCommunication("Communication");
+        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
+        send.sendCsharpServer(command);
         return view;
     }
 
@@ -132,7 +141,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                         }
 
 
-                        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.CREATE,
+                        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomCreate,
                                 roomName.getText().toString(),
                                 roomJoinMax.getText().toString(),
                                 roomTag.getText().toString(),
@@ -141,6 +150,8 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                                 );
 
                         jeongLog.logD(" 명령어 생성 검증 :: "+command);
+                        jeongLog.logD("명령어 길이 : "+command.length());
+
 
                         CsharpServerCommunication send = new CsharpServerCommunication("Communication");
 

@@ -48,9 +48,9 @@ namespace PeeKaBoo
 
                 transferSock.BeginReceive(receiveBytes, 0, receiveBytes.Length, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
 
-                sendBytes = Encoding.Default.GetBytes("c# server에서 데이터를 보냇어!\r");
+                //sendBytes = Encoding.Default.GetBytes("c# server에서 데이터를 보냇어!\r");
 
-               // transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
+                //transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
 
 
 
@@ -71,18 +71,34 @@ namespace PeeKaBoo
             // 데이터 베이스 를 기록 합니다.
             // 혹은 데이터 를 이용할 클래스를 생성하는 
             // 생성자 호출 
+            String ReceiceData = Encoding.Default.GetString(receiveBytes);
+
+
+
+            string sendData = "";
+            sendData = Parser.CommandParser(ReceiceData);
 
             for (int i = 0; i < receiveBytes.Length; i++)
             {
                 receiveBytes[i] = 0;
             }
-            transferSock.Close();
+
+
+            sendBytes = Encoding.Default.GetBytes(sendData);
+
+            transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
+            //transferSock.Close();
         }
 
         private void sendStr(IAsyncResult ar)
         {
             Socket transferSock = (Socket)ar.AsyncState;
 
+
+            for (int i = 0; i < sendBytes.Length; i++)
+            {
+                sendBytes[i] = 0;
+            }
 
 
             Console.WriteLine("---------------------------------------");

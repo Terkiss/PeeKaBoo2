@@ -3,10 +3,10 @@ package com.terukiss.peekaboo2.helper;
 import java.io.IOException;
 
 public class PeeKaBooProtocol {
-    public static final int CREATE  = 0;
-    public static final int SEND    = 1;
-    public static final int DELETE  = 2;
-
+    public static final int RoomCreate = 0;
+    public static final int MesaageSEND = 1;
+    public static final int RoomDelete = 2;
+    public static final int RoomRequst = 3;
 
     public PeeKaBooProtocol()
     {
@@ -26,6 +26,9 @@ public class PeeKaBooProtocol {
      *  2. uuid
      *  3. 방이름
      *
+     *  방데이터 요청시
+     *  1. 명령어
+     *  2. uuid
      *
      *  메세지 전송시
      *  1. 명령어
@@ -41,23 +44,30 @@ public class PeeKaBooProtocol {
     {
         try
         {
-            if(commmand == CREATE)
+            if(commmand == RoomCreate)
             {
                 if(data.length != 5)
                 {
                     throw new IOException();
                 }
             }
-            else if(commmand == SEND)
+            else if(commmand == MesaageSEND)
             {
                 if(data.length != 2)
                 {
                     throw new IOException();
                 }
             }
-            else if(commmand == DELETE)
+            else if(commmand == RoomDelete)
             {
                 if(data.length != 4)
+                {
+                    throw new IOException();
+                }
+            }
+            else if(commmand == RoomRequst)
+            {
+                if(data.length != 1 )
                 {
                     throw new IOException();
                 }

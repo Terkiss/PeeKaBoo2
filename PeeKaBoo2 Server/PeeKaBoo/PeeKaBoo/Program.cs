@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PeeKaBoo.DataBase;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PeeKaBoo
 {
@@ -19,10 +21,15 @@ namespace PeeKaBoo
 
             ServerProgram serverProgram = new ServerProgram();
 
+            DataBaseHelper dataBaseHelper = DataBaseHelper._Instance;
+
+            dataBaseHelper.OpenDB(DataBaseInfo._DBName);
+
+            dataBaseHelper.sqlRun(DataBaseInfo.CreateServerConfigData);
 
             while (true)
-            { 
-                Console.WriteLine("   1.  서버 설정 ");
+            {
+                Console.WriteLine("   1.  설정 ");
                 Console.WriteLine("   2.  방삭제 ");
                 Console.WriteLine("   3.  방인원 조회 ");
                 Console.WriteLine("   4.  방세부 설정 수정 ");
@@ -64,6 +71,117 @@ namespace PeeKaBoo
                     Console.WriteLine("\n\n");
                     Console.WriteLine("어허");
                     Console.WriteLine("\n\n");
+
+
+                    var cusor = dataBaseHelper.sqlRunForResult("select * from " + DataBaseInfo._TableServerConfigData + ";");
+
+                    // 데이터 베이스에 다음 레코드가 있으면 false 없으면 true
+                    if (!cusor.HasRows)
+                    {
+                        Console.WriteLine("심플 데이터 설정");
+                        Console.WriteLine(" ");
+
+                        Console.Write(" 해당 서버의 이름 :: ");
+                        String serverName = Console.ReadLine();
+                        if (serverName.Length < 1)
+                        {
+                            Console.WriteLine("잘못 된 라인 ");
+
+                            while (true)
+                            {
+                                Console.Write(" 해당 서버의 이름 :: ");
+                                serverName = Console.ReadLine();
+
+                                if (!(serverName.Length < 1))
+                                {
+                                    break;
+                                }
+
+                            }
+                        }
+
+                        Console.Write("\n");
+
+
+                        Console.Write(" 포트 :: ");
+                        String serverPort = Console.ReadLine();
+                        Regex regex = new Regex(@"[0-9]");
+                        if (!regex.IsMatch(serverPort))
+                        {
+                            while (true)
+                            {
+                                Console.Write(" 포트 :: ");
+                                serverPort = Console.ReadLine();
+
+                                if (regex.IsMatch(serverPort))
+                                {
+                                    break;
+                                }
+                            }
+                        }
+
+                        Console.Write("공개된 서버 (Y/N) :: ");
+                        String serverOpen = Console.ReadLine();
+                        while (true)
+                        {
+                            if (serverOpen.Equals("Y") || serverOpen.Equals("y") || serverOpen.Equals("N") || serverOpen.Equals("n"))
+                            {
+                                break;
+                            }
+                            Console.Write("공개된 서버 (Y/N) :: ");
+                            serverOpen = Console.ReadLine();
+                        }
+
+
+                        Console.Write("간단한 서버 소개 \n");
+                        String serverIntroduction = Console.ReadLine();
+
+
+
+                        string[] columns = dataBaseHelper.getColumnList(DataBaseInfo._TableServerConfigData);
+                        string sql = dataBaseHelper.insertSqlGenerator(DataBaseInfo._TableServerConfigData, columns, new string[]{
+                            serverName,
+                            serverPort,
+                            serverOpen,
+                            serverIntroduction
+                        });
+
+                        dataBaseHelper.sqlRun(sql);
+
+                        // 테이블 생성   
+                        dataBaseHelper.sqlRun(DataBaseInfo.CreateServerLogTable);
+
+                        // 방테이블 생성
+                        dataBaseHelper.sqlRun(DataBaseInfo.CreateRoomTable);
+                        dataBaseHelper.sqlRun(DataBaseInfo.CreateRoomJoinUserTable);
+                        dataBaseHelper.sqlRun(DataBaseInfo.CreateChatTable);
+                     
+                    }
+
+                    string selectSQL = "select * from " + DataBaseInfo._TableServerConfigData;
+
+                    cusor = dataBaseHelper.sqlRunForResult(selectSQL);
+
+                    while (cusor.Read())
+                    {
+                        ServerConfiguration.ServerName = cusor.GetString(0);
+                        ServerConfiguration.Serverport = cusor.GetString(1);
+                        ServerConfiguration.DisclosureStatus = cusor.GetString(2);
+                        ServerConfiguration.ServerIntroduction = cusor.GetString(3);
+                    }
+
+
+                    Console.WriteLine(ServerConfiguration.ServerName);
+                    Console.WriteLine(ServerConfiguration.Serverport);
+                    Console.WriteLine(ServerConfiguration.DisclosureStatus);
+                    Console.WriteLine(ServerConfiguration.ServerIntroduction);
+
+
+
+                    Console.Title = "Server Name : "+ServerConfiguration.ServerName + " 실행 중";
+
+
+
                     serverProgram.ServerStart();
                 }
                 else if (inputCommand.Equals("Stop"))
@@ -72,6 +190,7 @@ namespace PeeKaBoo
                     Console.WriteLine("서버 정지");
                     Console.WriteLine("\n\n");
                     serverProgram.ServerStop();
+                    Console.Title = "Server Name : " + ServerConfiguration.ServerName + "";
                 }
                 else
                 {
@@ -79,45 +198,45 @@ namespace PeeKaBoo
                     Console.WriteLine(" 올바른 명령이 아닙니다. ");
                     Console.WriteLine("\n\n");
                 }
+                
+
+
+
+
+                //Console.WriteLine("---------------------------------------");
+                //Console.WriteLine(" 클라이언트의 연결을 기다립니다........ ");
+                //Console.WriteLine("---------------------------------------");
+
+
+                //Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+
+                //serverSocket.Bind(new IPEndPoint(IPAddress.Any, 10000));
+
+                //// 서버 최대 접속 인원
+                //serverSocket.Listen(100);
+
+                //Socket transferSock = serverSocket.Accept();
+
+                //Console.WriteLine("---------------------------------------");
+                //Console.WriteLine(" 클라이언트의 연결이 성공..............");
+                //Console.WriteLine("---------------------------------------");
+
+
+                //transferSock.BeginReceive(receiveBytes, 0, receiveBytes.Length, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
+
+                //sendBytes = Encoding.Default.GetBytes("c# server에서 데이터를 보냇어!\r");
+
+                //transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
+
+
+
+
+                //Console.WriteLine("어허");
+
             }
 
-            
-            
-
-            //Console.WriteLine("---------------------------------------");
-            //Console.WriteLine(" 클라이언트의 연결을 기다립니다........ ");
-            //Console.WriteLine("---------------------------------------");
-
-
-            //Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-            //serverSocket.Bind(new IPEndPoint(IPAddress.Any, 10000));
-
-            //// 서버 최대 접속 인원
-            //serverSocket.Listen(100);
-
-            //Socket transferSock = serverSocket.Accept();
-
-            //Console.WriteLine("---------------------------------------");
-            //Console.WriteLine(" 클라이언트의 연결이 성공..............");
-            //Console.WriteLine("---------------------------------------");
-            
-
-            //transferSock.BeginReceive(receiveBytes, 0, receiveBytes.Length, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
-
-            //sendBytes = Encoding.Default.GetBytes("c# server에서 데이터를 보냇어!\r");
-
-            //transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
-
-          
-
-
-            //Console.WriteLine("어허");
 
         }
-
-
-
 
         public static void tcpServer()
         {
