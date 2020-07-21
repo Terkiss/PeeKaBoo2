@@ -33,7 +33,7 @@ public class DatabaseManager extends AppCompatActivity {
 
     public DatabaseManager initialization(@NonNull Context context)
     {
-        jeongLog = new JeongLog(context, "DB");
+        jeongLog = new JeongLog( "DB");
 
 
         this.context = context;

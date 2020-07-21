@@ -103,7 +103,7 @@ public class CsharpServerCommunication {
                     }
                     jeongLog.logD("최종 받은 데이터 결과 : "+receiveData) ;
 
-
+                    CommandParser.Parser(receiveData);
 
                     byteArrayOutputStream.close();
                     out.close();

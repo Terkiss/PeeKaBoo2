@@ -38,7 +38,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
     View view = null;
     ArrayList<ServerListItem> serverListItems = new ArrayList<>();
     RecyclerView recyclerView;
-    MyRecyclerViewAdapter adapter;
+    ServerListRecyclerViewAdapter adapter;
     PeekabooAlartDialog alartDialog;
     JeongLog jeongLog = null;
     public Fragment_Server_List() {
@@ -84,7 +84,7 @@ public class Fragment_Server_List extends Fragment implements View.OnClickListen
             fabAdd.setOnClickListener(this);
             fabDel.setOnClickListener(this);
 
-            adapter = new MyRecyclerViewAdapter(serverListItems, getContext());
+            adapter = new ServerListRecyclerViewAdapter(serverListItems, getContext());
 
             reloadRecycleView();
 

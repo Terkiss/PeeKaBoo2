@@ -4,15 +4,17 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-public class JeongLog {
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+
+public class JeongLog  {
     //public static JeongLog log;
     private Context context;
     private String tag = "JM";
 
-    public JeongLog(Context _context, String tag) {
-        context = _context;
-        this.tag = tag;
-    }
+
 
     public JeongLog(String tags) {
         this.tag = tags;
@@ -23,10 +25,14 @@ public class JeongLog {
         this.tag = tag;
     }
 
+
+
     public void toast(String str)
     {
+
         Toast.makeText(context, str, Toast.LENGTH_LONG).show();
     }
+
 
 
     public void logD(String str)
@@ -49,5 +55,7 @@ public class JeongLog {
             }
         }
     }
+
+
 
 }

@@ -20,7 +20,7 @@ public class UuidGets {
 
     public UuidGets(Context context) {
         this.context = context;
-        jeongLog = new JeongLog(context, "UUID");
+        jeongLog = new JeongLog("UUID");
     }
 
     @SuppressLint("HardwareIds")

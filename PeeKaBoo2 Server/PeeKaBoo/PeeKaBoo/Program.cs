@@ -158,6 +158,9 @@ namespace PeeKaBoo
                      
                     }
 
+
+
+                    // 서버 설정 테이블에 내용을 조회 
                     string selectSQL = "select * from " + DataBaseInfo._TableServerConfigData;
 
                     cusor = dataBaseHelper.sqlRunForResult(selectSQL);

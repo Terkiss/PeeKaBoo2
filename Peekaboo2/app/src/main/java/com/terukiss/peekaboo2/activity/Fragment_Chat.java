@@ -59,13 +59,15 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
             String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
 
-            //send.sendCsharpServer(command);
+            send.sendCsharpServer(command);
 
 
         }
-        CsharpServerCommunication send = new CsharpServerCommunication("Communication");
-        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
-        send.sendCsharpServer(command);
+
+
+//        CsharpServerCommunication send = new CsharpServerCommunication("Communication");
+//        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
+//        send.sendCsharpServer(command);
         return view;
     }
 

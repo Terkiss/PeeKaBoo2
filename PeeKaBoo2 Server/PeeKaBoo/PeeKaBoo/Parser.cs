@@ -41,7 +41,7 @@ namespace PeeKaBoo
 
             return result;
         }
-        private static void roomDataDBInsert(string[] processed_Data)
+        private static string roomDataDBInsert(string[] processed_Data)
         {
             string[] columns = DataBaseHelper._Instance.getColumnList(DataBaseInfo._TableRoom);
             string sql = DataBaseHelper._Instance.insertSqlGenerator(
@@ -50,6 +50,7 @@ namespace PeeKaBoo
                 );
 
             DataBaseHelper._Instance.sqlRun(sql);
+            return PeeKaBooProtocol.ROOMCREATE + "|success";
         }
         private static string Pre_Processing_Command(string[] data)
         {
@@ -73,7 +74,7 @@ namespace PeeKaBoo
                     Console.WriteLine("처리한 데이터 " + processed[i - 1]);
                 }
 
-                roomDataDBInsert(processed);
+                result = roomDataDBInsert(processed);
                 // DataBaseHelper._Instance.insertData("roomTBL", new string[] { "1", "2", "3" }, new string[] { "1-1", "11-2", "1-3" });
 
             }
@@ -91,6 +92,7 @@ namespace PeeKaBoo
                 LogWriter(data);
                 // 룸 테이블의 내용을 조회 하여 데이터로 가공후 전송
                 result = RoomRequest();
+                //Console.WriteLine(RoomRequest());
                 
             }
 
@@ -103,6 +105,7 @@ namespace PeeKaBoo
             var cursor = DataBaseHelper._Instance.sqlRunForResult(sql);
 
             string roomlist = "";
+            roomlist += PeeKaBooProtocol.ROOMREQUEST + "|";
             while (cursor.Read())
             {
                 roomlist += cursor.GetString(0)+"|";

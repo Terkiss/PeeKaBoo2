@@ -5,17 +5,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentViewHolder;
-
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 import com.terukiss.peekaboo2.R;
 import com.terukiss.peekaboo2.helper.ConnectionInfo;
 import com.terukiss.peekaboo2.helper.JeongLog;
@@ -25,6 +19,7 @@ public class ContentBindActivity extends AppCompatActivity {
     ViewPager viewPager;
     JeongLog jeongLog;
     BottomNavigationView bottomNavigationView ;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
