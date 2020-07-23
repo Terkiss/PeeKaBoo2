@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -98,6 +99,7 @@ public class DatabaseManager extends AppCompatActivity {
         String sql = "insert into "+_TableName+"("+filed+") values"+Riddle;
         jeongLog.logD(sql);
         db.execSQL(sql, data);
+        //INSERT OR IGNORE into roomTBL(roomName, maxJoin, roomTag, joinPassword, superUser) VALUES("4","2","3","4","5")
     }
     public void insertData(String table, String nullColumnHack, ContentValues values)
     {
@@ -160,6 +162,11 @@ public class DatabaseManager extends AppCompatActivity {
             jeongLog.logD("유저 정보 테이블을 생성 ");
             db.execSQL(DataBaseInfo._CreateUserTable);
 
+            jeongLog.logD("방 정보 테이블을 생성");
+            db.execSQL(DataBaseInfo._CreateRoomTable);
+
+            jeongLog.logD("채팅 정보 테이블을 생성 ");
+            db.execSQL(DataBaseInfo._CreateChatTable);
         }
 
         @Override

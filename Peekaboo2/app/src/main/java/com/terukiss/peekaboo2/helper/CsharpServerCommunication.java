@@ -88,11 +88,11 @@ public class CsharpServerCommunication {
 
                     server.getInputStream().read(buf);
 
-                    String receiveData = "";
+                   String receiveData = "";
                     for (int i = 0; i < buf.length; i++)
                     {
-                        jeongLog.logD(i+"어허"+receiveData);
-                        jeongLog.logD("버퍼 데이터"+buf[i]);
+                       // jeongLog.logD(i+"어허"+receiveData);
+                        //jeongLog.logD("버퍼 데이터"+buf[i]);
                         if(buf[i]==0)
                         {
                             byteArrayOutputStream.write(buf, 0, i-1);

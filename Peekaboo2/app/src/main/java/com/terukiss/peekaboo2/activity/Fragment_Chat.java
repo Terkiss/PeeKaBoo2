@@ -30,6 +30,8 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     private JeongLog jeongLog  ;
 
     private RecyclerView recyclerView;
+    private RoomListRecyclerViewAdapter adapter;
+
     public Fragment_Chat() {
         // Required empty public constructor
     }
@@ -53,15 +55,18 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
             fabBtn.setOnClickListener(this);
 
-            recyclerView = view.findViewById(R.id.chat_RecyclerView);
+            //recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
-            CsharpServerCommunication send = new CsharpServerCommunication("Communication");
+            if( !(ConnectionInfo.ServerHostName.length() < 1))
+            {
+                CsharpServerCommunication send = new CsharpServerCommunication("Communication");
+                String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
+                send.sendCsharpServer(command);
+            }
 
-            String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
-
-            send.sendCsharpServer(command);
-
-
+//            adapter = new RoomListRecyclerViewAdapter(getContext());
+//
+//            recyclerView.setAdapter(adapter);
         }
 
 

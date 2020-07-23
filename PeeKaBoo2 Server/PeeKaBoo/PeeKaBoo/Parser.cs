@@ -8,6 +8,7 @@ namespace PeeKaBoo
 {
     class Parser
     {
+        
         public static string CommandParser(string str)
         {
             string[] data = str.Split("|");
@@ -36,6 +37,7 @@ namespace PeeKaBoo
 
                 data[data.Length - 1] = uuid;
                 
+               
                 result = Pre_Processing_Command(data);
             }
 
@@ -101,18 +103,11 @@ namespace PeeKaBoo
     
         private static string RoomRequest()
         {
-            string sql = "select * from " + DataBaseInfo._TableRoom;
-            var cursor = DataBaseHelper._Instance.sqlRunForResult(sql);
-
             string roomlist = "";
-            roomlist += PeeKaBooProtocol.ROOMREQUEST + "|";
-            while (cursor.Read())
-            {
-                roomlist += cursor.GetString(0)+"|";
-            }
-
+    
+            roomlist = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.ROOMREQUESTRESPONSE);
+               
             return roomlist;
-
         }
         private static void LogWriter(params string[] data)
         {

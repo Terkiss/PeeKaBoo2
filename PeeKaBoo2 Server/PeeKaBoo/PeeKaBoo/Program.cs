@@ -66,7 +66,7 @@ namespace PeeKaBoo
                     Console.WriteLine("방세부 설정 수정");
                     Console.WriteLine("\n\n");
                 }
-                else if (inputCommand.Equals("Start"))
+                else if (inputCommand.Equals("Start") || inputCommand.Equals("5"))
                 {
                     Console.WriteLine("\n\n");
                     Console.WriteLine("어허");
@@ -187,7 +187,7 @@ namespace PeeKaBoo
 
                     serverProgram.ServerStart();
                 }
-                else if (inputCommand.Equals("Stop"))
+                else if (inputCommand.Equals("Stop") || inputCommand.Equals("6") )
                 {
                     Console.WriteLine("\n\n");
                     Console.WriteLine("서버 정지");

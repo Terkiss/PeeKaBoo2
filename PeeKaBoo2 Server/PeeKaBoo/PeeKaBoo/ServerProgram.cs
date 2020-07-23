@@ -76,6 +76,8 @@ namespace PeeKaBoo
 
 
             string sendData = "";
+
+           
             sendData = Parser.CommandParser(ReceiceData);
 
             for (int i = 0; i < receiveBytes.Length; i++)
@@ -83,9 +85,11 @@ namespace PeeKaBoo
                 receiveBytes[i] = 0;
             }
 
-
-            sendBytes = Encoding.Default.GetBytes(sendData);
-
+            // 데이터가 보내는 바이트  보다 커지면 문제가 발생 할 소지가 있음 추후에 수정 
+           // sendBytes = Encoding.Default.GetBytes(sendData);
+            Byte[] send = Encoding.Default.GetBytes(sendData);
+            sendBytes = send;
+            Console.WriteLine("보내는 데이터의 길이 " + send.Length);
             transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
             //transferSock.Close();
         }

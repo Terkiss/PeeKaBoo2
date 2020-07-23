@@ -1,16 +1,20 @@
-﻿using System;
+﻿using PeeKaBoo.DataBase;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace PeeKaBoo
 {
+
+    // todo 피카부 프로토콜에 parser 클래스의 통합 이 필요함 
     class PeeKaBooProtocol
     {
-        public static int ROOMCREATE    = 0;
-        public static int MESSAGESEND      = 1;
-        public static int ROOMDELETE    = 2;
-        public static int ROOMREQUEST = 3;
+        public static int ROOMCREATE          = 0;
+        public static int MESSAGESEND         = 1;
+        public static int ROOMDELETE          = 2;
+        public static int ROOMREQUEST         = 3;
+        public static int ROOMREQUESTRESPONSE = 4;
 
         public PeeKaBooProtocol()
         { 
@@ -37,49 +41,37 @@ namespace PeeKaBoo
      *  3. 프로필 이름
      *  4. 방이름
      *  5. 메세지
-     * @param commmand
+     * @param command
      * @param data
      * @return
      */
-        public static String commandGenerator(int commmand, params string[] data)
+        public static String commandGenerator(int command)
         {
-            try
+            string sql = "";
+            string commandStr = "";
+            DataBaseHelper dataBaseHelper = DataBaseHelper._Instance;
+            if (command == PeeKaBooProtocol.ROOMREQUESTRESPONSE)
             {
-                if (commmand == ROOMCREATE)
-                {
-                    if (data.Length != 5)
-                    {
-                        throw new IOException();
-                    }
-                }
-                else if (commmand == MESSAGESEND)
-                {
-                    if (data.Length != 2)
-                    {
-                        throw new IOException();
-                    }
-                }
-                else if (commmand == ROOMDELETE)
-                {
-                    if (data.Length != 4)
-                    {
-                        throw new IOException();
-                    }
-                }
-                StringBuilder tempCommand = new StringBuilder();
+                sql = "select * from " + DataBaseInfo._TableRoom;
 
-                tempCommand.Append(commmand);
-                for (int i = 0; i < data.Length; i++)
+                var cursor = DataBaseHelper._Instance.sqlRunForResult(sql);
+
+                // 명령문&*방이름|맥스인원|태크|패스워드|방장*방이름|맥스인원|태크|패스워드|방장
+                commandStr += PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
+                while (cursor.Read())
                 {
-                    tempCommand.Append("|").Append(data[i]);
+                    string roomlist = "*";
+                    roomlist += cursor.GetString(0) + "|";
+                    roomlist += cursor.GetString(1) + "|";
+                    roomlist += cursor.GetString(2) + "|";
+                    roomlist += cursor.GetString(3) + "|";
+                    roomlist += cursor.GetString(4);
+
+                    commandStr += roomlist;
                 }
-                return tempCommand.ToString();
             }
-            catch (IOException E)
-            {
-                Console.WriteLine(E.StackTrace);
-            }
-            return "0";
+
+            return commandStr;
         }
 
 

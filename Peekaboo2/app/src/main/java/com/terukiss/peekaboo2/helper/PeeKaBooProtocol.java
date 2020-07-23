@@ -2,12 +2,15 @@ package com.terukiss.peekaboo2.helper;
 
 import java.io.IOException;
 
+
+
+// todo 피카부 프로토콜에 나중에 parser  클래스와 통합이 필요하다 (최적화 )
 public class PeeKaBooProtocol {
     public static final int RoomCreate = 0;
     public static final int MesaageSEND = 1;
     public static final int RoomDelete = 2;
     public static final int RoomRequst = 3;
-
+    public static final int ROOMREQUESTRESPONSE = 4;
     public PeeKaBooProtocol()
     {
     }

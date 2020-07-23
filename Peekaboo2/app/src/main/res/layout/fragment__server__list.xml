@@ -21,7 +21,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="15sp"
         android:backgroundTint="#9500ff"
-        android:src="@drawable/drawable_floatbtton_00" />
+        android:src="@drawable/drawable_floatbtton_04" />
 
 
 
@@ -33,7 +33,7 @@
         android:layout_marginRight="15sp"
         android:layout_marginBottom="150dp"
         android:backgroundTint="#9500ff"
-        android:src="@drawable/drawable_floatbtton_01"
+        android:src="@drawable/drawable_floatbtton_05"
         android:visibility="invisible"
         />
 
@@ -46,7 +46,7 @@
         android:layout_marginRight="15sp"
         android:layout_marginBottom="90dp"
         android:backgroundTint="#9500ff"
-        android:src="@drawable/drawable_floatbtton_02"
+        android:src="@drawable/drawable_floatbtton_06"
         android:visibility="invisible"
         />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
