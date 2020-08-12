@@ -35,6 +35,8 @@ public class CommandParser {
         {
             String[] refinedData = data[1].split("[*]");
             jeongLog.logD(refinedData.length+" 정제 데이터 길이 ");
+
+
             for(int i = 0 ; i < refinedData.length; i++)
             {
 

@@ -71,6 +71,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
             }
 
             adapter = new RoomListRecyclerViewAdapter(getContext(),roomTitle);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
             recyclerView.setAdapter(adapter);
 
@@ -174,6 +175,23 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                         jeongLog.logD("명령어 길이 : "+command.length());
 
 
+                        // 데이터 베이스에 데이터를 입력
+                        String[] roomTBLColumn = DatabaseManager._Instance.getColumnList(DataBaseInfo._TableRoom);
+                        DatabaseManager._Instance.insertDataForDataDeduplication(
+                                DataBaseInfo._TableRoom,
+                                roomTBLColumn,
+                                new String[]
+                                        {
+                                                roomName.getText().toString(),
+                                                roomJoinMax.getText().toString(),
+                                                roomTag.getText().toString(),
+                                                pw,
+                                                UserProfile.getProfileUUID()
+                                        }
+                        );
+
+
+                        // 접속된 채팅서버에 만든 방을 알림
                         CsharpServerCommunication send = new CsharpServerCommunication("Communication");
 
                         send.sendCsharpServer(command);
@@ -214,7 +232,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
             roomTitle.add(cursor.getString(1));
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         adapter.setItem(roomTitle);
         adapter.notifyDataSetChanged();
     }

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.RoomDataModel;
 
 import java.util.ArrayList;
 
