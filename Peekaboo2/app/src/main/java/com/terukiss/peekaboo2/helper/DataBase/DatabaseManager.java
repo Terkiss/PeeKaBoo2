@@ -1,4 +1,4 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.DataBase;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -6,12 +6,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.terukiss.peekaboo2.helper.JeongLog;
 
 import java.util.ArrayList;
 
@@ -101,7 +101,31 @@ public class DatabaseManager extends AppCompatActivity {
         db.execSQL(sql, data);
         //INSERT OR IGNORE into roomTBL(roomName, maxJoin, roomTag, joinPassword, superUser) VALUES("4","2","3","4","5")
     }
+    public void insertDataForDataDeduplication(String _TableName, String[] filedName, String[] data)
+    {
+        String filed ="";
+        String Riddle="(";
+
+        for(int i = 0; i<filedName.length; i++)
+        {
+            if(i == filedName.length-1)
+            {
+                filed += filedName[i];
+                Riddle +="?);";
+                break;
+            }
+            filed += filedName[i]+", ";
+            Riddle +="?, ";
+        }
+        String sql = "insert or ignore into "+_TableName+"("+filed+") values"+Riddle;
+        jeongLog.logD(sql);
+        db.execSQL(sql, data);
+    }
     public void insertData(String table, String nullColumnHack, ContentValues values)
+    {
+        db.insert(table, nullColumnHack, values);
+    }
+    public void insertDataForDataDeduplication(String table, String nullColumnHack, ContentValues values)
     {
         db.insert(table, nullColumnHack, values);
     }

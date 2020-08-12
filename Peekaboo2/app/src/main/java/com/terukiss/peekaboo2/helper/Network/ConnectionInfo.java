@@ -1,4 +1,4 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.Network;
 
 // 커넥션 관련 클래스
 public class ConnectionInfo {

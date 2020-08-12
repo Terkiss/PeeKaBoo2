@@ -10,16 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.ClientConfigrationData;
+import com.terukiss.peekaboo2.helper.RoomDataModel;
+
+import java.util.ArrayList;
 
 public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRecyclerViewAdapter.ViewHolder> {
 
-    Context context;
-    public RoomListRecyclerViewAdapter(Context context)
+    private Context context;
+    private ArrayList<String> item ;
+    public RoomListRecyclerViewAdapter(Context context, ArrayList<String> item)
     {
         this.context = context;
+        this.item = item;
     }
-
+    public void setItem(ArrayList<String> items)
+    {
+        this.item = items;
+    }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @NonNull
@@ -29,7 +36,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRe
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.recycle_item, parent, false);
+        View view = inflater.inflate(R.layout.recycle_item_01, parent, false);
 
         ViewHolder vh = new ViewHolder(view);
 
@@ -40,15 +47,16 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRe
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // 데이터 바인딩
-        holder.room.setText(ClientConfigrationData.getRoomData().get(position));
+        holder.room.setText(item.get(position));
         holder.sender.setText("보낸사람 미구현");
         holder.contents.setText("컨텐츠 내용 미구현");
         holder.time.setText("현재 시간 미구현");
     }
 
     @Override
-    public int getItemCount() {
-        return ClientConfigrationData.getRoomData().size();
+    public int getItemCount()
+    {
+        return item.size();
     }
 
 

@@ -14,11 +14,11 @@ import android.os.Handler;
 
 import com.terukiss.peekaboo2.activity.ContentBindActivity;
 import com.terukiss.peekaboo2.activity.UserProfile;
-import com.terukiss.peekaboo2.helper.ConnectionInfo;
-import com.terukiss.peekaboo2.helper.DataBaseInfo;
-import com.terukiss.peekaboo2.helper.DatabaseManager;
+import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
-import com.terukiss.peekaboo2.helper.PermissionRequst;
+import com.terukiss.peekaboo2.helper.Permission.PermissionRequst;
 import com.terukiss.peekaboo2.helper.UuidGets;
 
 import java.util.Random;

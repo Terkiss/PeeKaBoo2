@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.ConnectionInfo;
-import com.terukiss.peekaboo2.helper.DataBaseInfo;
-import com.terukiss.peekaboo2.helper.DatabaseManager;
+import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DatabaseManager;
 
 import java.util.ArrayList;
 
@@ -41,6 +41,7 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        assert inflater != null;
         View view = inflater.inflate(R.layout.recycle_item, parent, false);
 
         ViewHolder vh = new ViewHolder(view);

@@ -1,4 +1,4 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.Network;
 
 import java.io.IOException;
 

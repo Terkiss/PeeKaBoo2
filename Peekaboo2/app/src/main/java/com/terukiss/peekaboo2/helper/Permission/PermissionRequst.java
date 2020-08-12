@@ -1,7 +1,6 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.Permission;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;

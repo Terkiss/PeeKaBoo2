@@ -1,11 +1,13 @@
 package com.terukiss.peekaboo2.activity;
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,11 +18,15 @@ import android.widget.EditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.ConnectionInfo;
-import com.terukiss.peekaboo2.helper.CsharpServerCommunication;
+import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.Network.CsharpServerCommunication;
+import com.terukiss.peekaboo2.helper.DataBase.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
-import com.terukiss.peekaboo2.helper.PeeKaBooProtocol;
+import com.terukiss.peekaboo2.helper.Network.PeeKaBooProtocol;
 import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
+
+import java.util.ArrayList;
 
 
 public class Fragment_Chat extends Fragment implements View.OnClickListener{
@@ -31,7 +37,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private RoomListRecyclerViewAdapter adapter;
-
+    private ArrayList<String> roomTitle = new ArrayList<>() ;
     public Fragment_Chat() {
         // Required empty public constructor
     }
@@ -55,7 +61,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
             fabBtn.setOnClickListener(this);
 
-            //recyclerView = view.findViewById(R.id.chat_RecyclerView);
+            recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
             if( !(ConnectionInfo.ServerHostName.length() < 1))
             {
@@ -64,15 +70,14 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                 send.sendCsharpServer(command);
             }
 
-//            adapter = new RoomListRecyclerViewAdapter(getContext());
-//
-//            recyclerView.setAdapter(adapter);
+            adapter = new RoomListRecyclerViewAdapter(getContext(),roomTitle);
+
+            recyclerView.setAdapter(adapter);
+
+            // 방 리로드 2초마다 갱신을 해야함  쓰레드나 안드로이드 백그라운드 서비스를 사용
+            reloadRecyclerView();
         }
 
-
-//        CsharpServerCommunication send = new CsharpServerCommunication("Communication");
-//        String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
-//        send.sendCsharpServer(command);
         return view;
     }
 
@@ -89,7 +94,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int id = v.getId();
-
+        final View viewObject = v;
         if(id == R.id.fab)
         {
 
@@ -120,6 +125,15 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                         jeongLog.logD("roomJoinMax"+roomJoinMax.getText());
                         jeongLog.logD("roomTag"+roomTag.getText());
                         jeongLog.logD("roomPW"+roomPW.getText());
+
+                        if(roomName.getText().toString().length() < 1)
+                        {
+                            // 방이름이 비엇을경우 서버 전송을 안함
+                            Snackbar.make(viewObject, "방이름은 절대로 비울수 없습니다", Snackbar.LENGTH_LONG).show();
+                            // 재로딩
+                            reloadRecyclerView();
+                            return;
+                        }
 
                         StringBuilder dd  = new StringBuilder();
                         dd.append("create");
@@ -164,7 +178,8 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
                         send.sendCsharpServer(command);
 
-
+                        // 재로딩
+                        reloadRecyclerView();
                     }
                 });
 
@@ -179,4 +194,28 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     }
 
 
+
+
+    private void reloadRecyclerView()
+    {
+        roomTitle.clear();
+        if( !(ConnectionInfo.ServerHostName.length() < 1))
+        {
+            CsharpServerCommunication send = new CsharpServerCommunication("Communication");
+            String command = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.RoomRequst, UserProfile.getProfileUUID());
+            send.sendCsharpServer(command);
+        }
+
+
+        Cursor cursor = DatabaseManager._Instance.selectDataForTable(DataBaseInfo._TableRoom);
+
+        while(cursor.moveToNext())
+        {
+            roomTitle.add(cursor.getString(1));
+        }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter.setItem(roomTitle);
+        adapter.notifyDataSetChanged();
+    }
 }

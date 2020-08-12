@@ -1,6 +1,8 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.Network;
 
-import java.util.ArrayList;
+import com.terukiss.peekaboo2.helper.DataBase.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DatabaseManager;
+import com.terukiss.peekaboo2.helper.JeongLog;
 
 public class CommandParser {
 
@@ -47,7 +49,8 @@ public class CommandParser {
                     jeongLog.logD("4. "+ secondRefinedData[4]);
 
                     DatabaseManager databaseManager = DatabaseManager._Instance;
-
+                    String[] fieldName = databaseManager.getColumnList(DataBaseInfo._TableRoom);
+                    databaseManager.insertDataForDataDeduplication(DataBaseInfo._TableRoom, fieldName, secondRefinedData);
                 }
             }
 

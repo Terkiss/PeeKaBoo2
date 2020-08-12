@@ -1,4 +1,4 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.FileIO;
 
 import android.graphics.Bitmap;
 

@@ -21,9 +21,9 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.ConnectionInfo;
-import com.terukiss.peekaboo2.helper.DataBaseInfo;
-import com.terukiss.peekaboo2.helper.DatabaseManager;
+import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DataBaseInfo;
+import com.terukiss.peekaboo2.helper.DataBase.DatabaseManager;
 import com.terukiss.peekaboo2.helper.JeongLog;
 import com.terukiss.peekaboo2.helper.PeekabooAlartDialog;
 

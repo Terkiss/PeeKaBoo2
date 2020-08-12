@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.terukiss.peekaboo2.R;
-import com.terukiss.peekaboo2.helper.ConnectionInfo;
+import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
 import com.terukiss.peekaboo2.helper.JeongLog;
 
 public class ContentBindActivity extends AppCompatActivity {

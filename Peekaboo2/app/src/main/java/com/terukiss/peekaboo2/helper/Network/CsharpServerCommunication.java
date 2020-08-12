@@ -1,13 +1,13 @@
-package com.terukiss.peekaboo2.helper;
+package com.terukiss.peekaboo2.helper.Network;
+
+import com.terukiss.peekaboo2.helper.JeongLog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 
 public class CsharpServerCommunication {
     JeongLog jeongLog;
@@ -86,7 +86,7 @@ public class CsharpServerCommunication {
                     byte[] buf = new byte[2000];
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(2000);
 
-                    server.getInputStream().read(buf);
+                   server.getInputStream().read(buf);
 
                    String receiveData = "";
                     for (int i = 0; i < buf.length; i++)
@@ -101,6 +101,9 @@ public class CsharpServerCommunication {
                             break;
                         }
                     }
+
+                    jeongLog.logD("임시적 데이터 결과 :  "+byteArrayOutputStream.toString("UTF-8"));
+
                     jeongLog.logD("최종 받은 데이터 결과 : "+receiveData) ;
 
                     CommandParser.Parser(receiveData);
