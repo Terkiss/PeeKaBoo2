@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
     View view = null;
-    private FloatingActionButton fabBtn;
+    private FloatingActionButton fabBtn, DebugFabButton;
     private JeongLog jeongLog  ;
 
     private RecyclerView recyclerView;
@@ -58,8 +58,10 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
             view = inflater.inflate(R.layout.fragment__chat, container, false);
 
             fabBtn = view.findViewById(R.id.fab);
+            DebugFabButton = view.findViewById(R.id.dataDel);
 
             fabBtn.setOnClickListener(this);
+            DebugFabButton.setOnClickListener(this);
 
             recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
@@ -208,6 +210,12 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
                 Snackbar.make(v, "서버 연결을 먼저 하시고 누르세욤 ", Snackbar.LENGTH_LONG).show();
             }
 
+        }
+        else if(id == R.id.dataDel)
+        {
+            // 방목록 db 초기화
+            DatabaseManager._Instance.deleteDataForTable(DataBaseInfo._TableRoom);
+            reloadRecyclerView();
         }
     }
 

@@ -45,19 +45,52 @@ namespace PeeKaBoo
      * @param data
      * @return
      */
+        private static bool IsCommand(int command)
+        {
+            bool check = true;
+
+
+            if (command == PeeKaBooProtocol.ROOMCREATE)
+            {
+                check = false;
+            }
+            else if (command == PeeKaBooProtocol.MESSAGESEND)
+            {
+                check = false;
+            }
+            else if (command == PeeKaBooProtocol.ROOMDELETE)
+            {
+                check = false;
+            }
+            else if (command == PeeKaBooProtocol.ROOMREQUEST)
+            {
+                check = false;
+            }
+            else if (command == PeeKaBooProtocol.ROOMREQUESTRESPONSE)
+            {
+                check = false;
+            }
+
+            return check;
+        }
         public static String commandGenerator(int command)
         {
+            if (IsCommand(command))
+            {
+                return "failed";
+            }
             string sql = "";
-            string commandStr = "";
+            string commandStr = PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
             DataBaseHelper dataBaseHelper = DataBaseHelper._Instance;
+
             if (command == PeeKaBooProtocol.ROOMREQUESTRESPONSE)
             {
                 sql = "select * from " + DataBaseInfo._TableRoom;
 
                 var cursor = DataBaseHelper._Instance.sqlRunForResult(sql);
 
-                // 명령문&*방이름|맥스인원|태크|패스워드|방장*방이름|맥스인원|태크|패스워드|방장
-                commandStr += PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
+                // 명령문&*방이름|맥스인원|태크|패스워드|방장
+                //commandStr += PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
                 while (cursor.Read())
                 {
                     string roomlist = "*";

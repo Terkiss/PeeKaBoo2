@@ -128,6 +128,8 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
                     contentValues.put("hostAddress", ConnectionInfo.ServerHostName);
                     contentValues.put("port", ConnectionInfo.ServerPort);
 
+
+                    // 가장 최근 연결 정보 디비 저장
                     databaseManager.deleteDataForTable(DataBaseInfo._TableLastConnect);
                     databaseManager.insertData(DataBaseInfo._TableLastConnect, null, contentValues);
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Project\\Peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj": {}
+    "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj": {}
   },
   "projects": {
-    "F:\\Project\\Peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj": {
+    "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\Peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj",
+        "projectUniqueName": "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj",
         "projectName": "PeeKaBoo",
-        "projectPath": "F:\\Project\\Peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj",
+        "projectPath": "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\PeeKaBoo.csproj",
         "packagesPath": "C:\\Users\\Jeong\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\Peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\obj\\",
+        "outputPath": "F:\\Project\\peekaboo2\\PeeKaBoo2 Server\\PeeKaBoo\\PeeKaBoo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jeong\\AppData\\Roaming\\NuGet\\NuGet.Config",

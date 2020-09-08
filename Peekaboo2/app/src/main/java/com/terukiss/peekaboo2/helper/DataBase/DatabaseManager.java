@@ -101,10 +101,16 @@ public class DatabaseManager extends AppCompatActivity {
         db.execSQL(sql, data);
         //INSERT OR IGNORE into roomTBL(roomName, maxJoin, roomTag, joinPassword, superUser) VALUES("4","2","3","4","5")
     }
+
+    // 데이터 베이스 중복 제거 입력
     public void insertDataForDataDeduplication(String _TableName, String[] filedName, String[] data)
     {
         String filed ="";
         String Riddle="(";
+
+        // 데이터 베이스 에서 테이블을 검색후 없으면 입력 있으면 입력을 건너 뜀 을 구현홰야함
+        Cursor cursor = selectDataForTable(_TableName);
+
 
         for(int i = 0; i<filedName.length; i++)
         {

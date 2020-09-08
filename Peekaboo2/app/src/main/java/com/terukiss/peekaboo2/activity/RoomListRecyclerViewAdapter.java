@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.terukiss.peekaboo2.R;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRe
         public TextView sender;
         public TextView contents;
         public TextView time;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             room = itemView.findViewById(R.id.recycleItem_RoomName);
@@ -78,6 +79,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRe
                 @Override
                 public void onClick(View v) {
                     // 방 엑티비티 실행
+                    Snackbar.make(v," 세부 채팅방은 미구현 입니다",Snackbar.LENGTH_LONG).show();
                 }
             });
         }

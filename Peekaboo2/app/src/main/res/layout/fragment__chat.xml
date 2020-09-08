@@ -23,7 +23,15 @@
 
         />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/dataDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/drawable_floatbtton_06" />
 
 
 </FrameLayout>
