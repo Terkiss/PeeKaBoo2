@@ -42,12 +42,13 @@ public class JeongLog  {
 
     public void logLongD(String str)
     {
+        Log.d(tag, "계속 호출됨" + str.length());
         while( str.length() > 0 )
         {
-            if( str.length() > 4000 )
+            if( str.length() > 2000 )
             {
-                Log.d(tag, str.substring( 0, 4000 ));
-                str = str.substring( 4000 );
+                Log.d(tag, str.substring( 0, 2000 ));
+                str = str.substring( 2000 );
             }
             else
             {

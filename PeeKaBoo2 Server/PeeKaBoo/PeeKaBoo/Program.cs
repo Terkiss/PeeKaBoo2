@@ -27,6 +27,13 @@ namespace PeeKaBoo
 
             dataBaseHelper.sqlRun(DataBaseInfo.CreateServerConfigData);
 
+
+            string sendData = "안녕하세요핳|";
+
+
+            Console.WriteLine("보내는 데이터의 길이 " + sendData.Length+"\n 바이트 길이"+Encoding.Default.GetBytes(sendData).Length);
+
+
             while (true)
             {
                 Console.WriteLine("   1.  설정 ");

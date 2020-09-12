@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-
+using PeeKaBoo.Network;
 namespace PeeKaBoo
 {
 
@@ -14,7 +14,7 @@ namespace PeeKaBoo
         bool run = true;
 
         byte[] receiveBytes = new byte[2000];
-        byte[] sendBytes = new byte[2000];
+        byte[] sendBytes = new byte[6000];
 
         public ServerProgram()
         {
@@ -44,7 +44,9 @@ namespace PeeKaBoo
                 serverSocket.Listen(100);
                 Console.WriteLine(" 클라이언트의 클라이언트 연결 대기..............");
                 Socket transferSock = serverSocket.Accept();
+               
                 Console.WriteLine(" 클라이언트의 연결이 성공..............");
+
 
                 transferSock.BeginReceive(receiveBytes, 0, receiveBytes.Length, SocketFlags.None, new AsyncCallback(receiveStr), transferSock);
 
@@ -54,8 +56,18 @@ namespace PeeKaBoo
 
 
 
+                // 테스트 시작
+                //MultiThreadedClientReceiver multiThreadedClient = new MultiThreadedClientReceiver(transferSock);
+
+                
+
             }
         }
+
+
+
+
+
 
         private void receiveStr(IAsyncResult ar)
         {
@@ -74,11 +86,10 @@ namespace PeeKaBoo
             String ReceiceData = Encoding.Default.GetString(receiveBytes);
 
 
-
-            string sendData = "";
-
-           
-            sendData = Parser.CommandParser(ReceiceData);
+            string sendData = "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"+
+                "테루키스입니다 테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다 테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다테루키스입니다 테루키스입니다 테루키스입니다테루키스입니다테루키스입니다 테루키스입니다 테루키스입니다 테루키스입니다 테루키스입니다 테루키스입니다 테루키스입니다|||";
+            // 여기 임시 주석처리
+            //sendData = Parser.CommandParser(ReceiceData);
 
             for (int i = 0; i < receiveBytes.Length; i++)
             {
@@ -88,8 +99,11 @@ namespace PeeKaBoo
             // 데이터가 보내는 바이트  보다 커지면 문제가 발생 할 소지가 있음 추후에 수정 
            // sendBytes = Encoding.Default.GetBytes(sendData);
             Byte[] send = Encoding.Default.GetBytes(sendData);
+            String sss = Encoding.Default.GetString(send);
             sendBytes = send;
-            Console.WriteLine("보내는 데이터의 길이 " + send.Length);
+       
+            Console.WriteLine(sendData.Length+"보내는 데이터의 길이 " +send.Length );
+            Console.WriteLine(sss);
             transferSock.BeginSend(sendBytes, 0, sendBytes.Length, SocketFlags.None, new AsyncCallback(sendStr), transferSock);
             //transferSock.Close();
         }

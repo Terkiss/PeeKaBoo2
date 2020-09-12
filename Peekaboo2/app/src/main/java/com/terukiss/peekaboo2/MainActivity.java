@@ -23,15 +23,19 @@ import com.terukiss.peekaboo2.helper.UuidGets;
 
 import java.util.Random;
 
+import com.terukiss.peekaboo2.helper.Network.CsharpServerCommunication;
 
 public class MainActivity extends AppCompatActivity {
 
-    int delayTime = 2000;
+    int delayTime = 3000;
     DatabaseManager databaseManager;
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
+        //CsharpServerCommunication aa  = new CsharpServerCommunication("Communication");
+        //aa.sendCsharpServer("홀리딱");
 
 
         PermissionRequst permissionRequst = new PermissionRequst();
@@ -114,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
+
+
+
+
+
 
 
         /*

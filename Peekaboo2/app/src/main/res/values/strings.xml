@@ -9,7 +9,7 @@
     <string name="menu_personal">Personal</string>
     <string name="menu_serverSetting">ServerSetting</string>
 
-    <string-array name = "LAN">
+    <string-array name="LAN">
         <item>"Android"</item>
         <item>"Java"</item>
         <item>"C/C++"</item>
