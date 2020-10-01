@@ -90,46 +90,78 @@ public class CsharpServerCommunication {
 
 
                     // 리시브 부분
-                    byte[] buf = new byte[1024*10];
+                    byte[] buf = new byte[1024];
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(10000);
 
                    //server.getInputStream().read(buf);
-                   //BufferedInputStream bufferedInputStream = new BufferedInputStream(server.getInputStream());
-                   //bufferedInputStream.read(buf);
+                   BufferedInputStream bufferedInputStream = new BufferedInputStream(server.getInputStream());
+                   bufferedInputStream.read(buf);
                     ArrayList<Byte> bytes = new ArrayList<>();
                     int lastRead = 1;
                     int prevRead = 0;
 
+                    jeongLog.logD("읽은 데이터 :: "+new String(buf));
+                    jeongLog.logD("현재 데이터의 길이 :: "+ buf.length);
 
-                    while(lastRead != 0)
-                    {
+//                    while(lastRead != 0)
+//                    {
+//                        lastRead = bufferedInputStream.read(buf);
+//                        jeongLog.logD(+prevRead+"last "+lastRead);
+//                        for(int i = 0; i<buf.length; i++)
+//                        {
+//                            bytes.add(buf[i]);
+//                            if(buf[i]==0)
+//                            {
+//                                break;
+//                            }
+//                        }
+//
+//                        jeongLog.logD("읽은 데이터 :: "+new String(buf));
+//                        String sss = new String(buf);
+//                        int index = 0;
+//                        index = sss.indexOf("|||");
+//
+//
+//                        prevRead++;
+//                        if(index > 0)
+//                        {
+//
+//                            jeongLog.logD("마지막 읽은 데이터 :: "+new String(buf));
+//                            break;
+//                        }
+//                        Arrays.fill(buf, (byte) 0);
+//                    }
 
-                        lastRead = server.getInputStream().read(buf);
-                       jeongLog.logD(+prevRead+"last "+lastRead);
-                        for(int i = 0; i<buf.length; i++)
-                        {
-                            bytes.add(buf[i]);
-                            if(buf[i]==0)
-                            {
-                                break;
-                            }
-                        }
-
-                        jeongLog.logD("읽은 데이터 :: "+new String(buf));
-                        String sss = new String(buf);
-                        int index = 0;
-                        index = sss.indexOf("|||");
-
-
-                        prevRead++;
-                        if(index > 0)
-                        {
-
-                            jeongLog.logD("마지막 읽은 데이터 :: "+new String(buf));
-                            break;
-                        }
-                        Arrays.fill(buf, (byte) 0);
-                    }
+                    jeongLog.logD("읽은 데이터 :: "+new String(buf));
+//                    while(lastRead != 0)
+//                    {
+//
+//                        lastRead = server.getInputStream().read(buf);
+//                       jeongLog.logD(+prevRead+"last "+lastRead);
+//                        for(int i = 0; i<buf.length; i++)
+//                        {
+//                            bytes.add(buf[i]);
+//                            if(buf[i]==0)
+//                            {
+//                                break;
+//                            }
+//                        }
+//
+//                        jeongLog.logD("읽은 데이터 :: "+new String(buf));
+//                        String sss = new String(buf);
+//                        int index = 0;
+//                        index = sss.indexOf("|||");
+//
+//
+//                        prevRead++;
+//                        if(index > 0)
+//                        {
+//
+//                            jeongLog.logD("마지막 읽은 데이터 :: "+new String(buf));
+//                            break;
+//                        }
+//                        Arrays.fill(buf, (byte) 0);
+//                    }
 
                   jeongLog.logD("????");
                   byte[] bb = new byte[bytes.size()];

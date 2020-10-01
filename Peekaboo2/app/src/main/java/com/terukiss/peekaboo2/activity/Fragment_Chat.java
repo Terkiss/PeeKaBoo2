@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
     View view = null;
-    private FloatingActionButton fabBtn, DebugFabButton;
+    private FloatingActionButton fabBtn, DebugFabButton, DebugFabSock;
     private JeongLog jeongLog  ;
 
     private RecyclerView recyclerView;
@@ -59,9 +59,11 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
 
             fabBtn = view.findViewById(R.id.fab);
             DebugFabButton = view.findViewById(R.id.dataDel);
+            DebugFabSock = view.findViewById(R.id.showSock);
 
             fabBtn.setOnClickListener(this);
             DebugFabButton.setOnClickListener(this);
+            DebugFabSock.setOnClickListener(this);
 
             recyclerView = view.findViewById(R.id.chat_RecyclerView);
 
@@ -98,6 +100,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         int id = v.getId();
         final View viewObject = v;
+
         if(id == R.id.fab)
         {
 
@@ -214,7 +217,15 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
         else if(id == R.id.dataDel)
         {
             // 방목록 db 초기화
-            DatabaseManager._Instance.deleteDataForTable(DataBaseInfo._TableRoom);
+            jeongLog.logD("잠깐만");
+           // DatabaseManager._Instance.deleteDataForTable(DataBaseInfo._TableRoom);
+            //reloadRecyclerView();
+        }
+        else if(id == R.id.showSock)
+        {
+            // int in = 1;
+
+            jeongLog.logD("잠깐만");
             reloadRecyclerView();
         }
     }

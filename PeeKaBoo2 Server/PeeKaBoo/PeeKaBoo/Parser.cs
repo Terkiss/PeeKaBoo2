@@ -65,7 +65,7 @@ namespace PeeKaBoo
                 //* 3 최대 접속 인원
                 //* 4 방태그
                 //* 5 방 입장 패스워드\
-                //*6 방장 uuid
+                //* 6 방장 uuid
                 string[] processed = new string[data.Length - 1];
                 for (int i = 1; i < data.Length; i++)
                 {
@@ -74,7 +74,7 @@ namespace PeeKaBoo
 
                     Console.WriteLine("처리한 데이터 " + processed[i - 1]);
                 }
-
+                Console.WriteLine("데이터 베이스 입력");
                 roomDataDBInsert(processed);
 
                 result = PeeKaBooProtocol.commandGenerator(PeeKaBooProtocol.ROOMCREATE);
