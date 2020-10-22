@@ -8,6 +8,7 @@ import com.terukiss.peekaboo2.helper.JeongLog;
 
 public class CommandParser {
 
+    // 명령어 분석
     public static void Parser(String str) {
         //https://copycoding.tistory.com/289
         JeongLog jeongLog = new JeongLog("Communication");

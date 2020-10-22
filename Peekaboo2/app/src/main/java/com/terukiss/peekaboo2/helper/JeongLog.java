@@ -47,7 +47,7 @@ public class JeongLog  {
         {
             if( str.length() > 2000 )
             {
-                Log.d(tag, str.substring( 0, 2000 ));
+                Log.d(tag, "롱롱"+str.substring( 0, 2000 ));
                 str = str.substring( 2000 );
             }
             else

@@ -94,14 +94,67 @@ public class CsharpServerCommunication {
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(10000);
 
                    //server.getInputStream().read(buf);
-                   BufferedInputStream bufferedInputStream = new BufferedInputStream(server.getInputStream());
-                   bufferedInputStream.read(buf);
+                   //BufferedInputStream bufferedInputStream = new BufferedInputStream(server.getInputStream());
+                  // bufferedInputStream.read(buf);
                     ArrayList<Byte> bytes = new ArrayList<>();
                     int lastRead = 1;
                     int prevRead = 0;
 
                     jeongLog.logD("읽은 데이터 :: "+new String(buf));
                     jeongLog.logD("현재 데이터의 길이 :: "+ buf.length);
+
+
+
+
+                    byte byttte[] = new byte[10240];
+                    int current = 0;
+                    while(lastRead != 0)
+                    {
+
+                        lastRead = server.getInputStream().read(buf);
+                        jeongLog.logD(+prevRead+"last "+lastRead);
+//                        for(int i = 0; i<buf.length; i++)
+//                        {
+//                            bytes.add(buf[i]);
+//                        }
+                        for(int i = 0; i <  buf.length; i++)
+                        {
+                            byttte[(current+i)] = buf[i];
+                        }
+                        current = buf.length +current ;
+                        jeongLog.logD("읽은 데이터 :: "+new String(buf));
+                        String sss = new String(buf);
+                        int index = 0;
+                        index = sss.indexOf("|||");
+
+
+                        prevRead++;
+                        if(index > 0)
+                        {
+
+                            jeongLog.logD("마지막 읽은 데이터 :: "+new String(buf));
+                            break;
+                        }
+                        Arrays.fill(buf, (byte) 0);
+                    }
+
+                    jeongLog.logD("????");
+                    byte[] bb = new byte[bytes.size()];
+                    for(int i =0; i < bytes.size(); i++)
+                    {
+                        bb[i] = bytes.get(i);
+
+                    }
+                    String Command = new String(byttte);
+
+
+                    jeongLog.logD("최종 처리 데이터 결과0 : "+ ssss.length());
+                    jeongLog.logD("최종 처리 데이터 결과1 : "+ ssss.substring(0,2000));
+                    jeongLog.logD("최종 처리 데이터 결과2 : "+ ssss.substring(2000,4000));
+                    jeongLog.logD("최종 처리 데이터 결과3 : "+ ssss.substring(4000));
+
+
+
 
 //                    while(lastRead != 0)
 //                    {
@@ -132,45 +185,8 @@ public class CsharpServerCommunication {
 //                        Arrays.fill(buf, (byte) 0);
 //                    }
 
-                    jeongLog.logD("읽은 데이터 :: "+new String(buf));
-//                    while(lastRead != 0)
-//                    {
-//
-//                        lastRead = server.getInputStream().read(buf);
-//                       jeongLog.logD(+prevRead+"last "+lastRead);
-//                        for(int i = 0; i<buf.length; i++)
-//                        {
-//                            bytes.add(buf[i]);
-//                            if(buf[i]==0)
-//                            {
-//                                break;
-//                            }
-//                        }
-//
-//                        jeongLog.logD("읽은 데이터 :: "+new String(buf));
-//                        String sss = new String(buf);
-//                        int index = 0;
-//                        index = sss.indexOf("|||");
-//
-//
-//                        prevRead++;
-//                        if(index > 0)
-//                        {
-//
-//                            jeongLog.logD("마지막 읽은 데이터 :: "+new String(buf));
-//                            break;
-//                        }
-//                        Arrays.fill(buf, (byte) 0);
-//                    }
 
-                  jeongLog.logD("????");
-                  byte[] bb = new byte[bytes.size()];
-                  for(int i =0; i < bytes.size(); i++)
-                  {
-                      bb[i] = bytes.get(i);
 
-                  }
-                    jeongLog.logD("최종 처리 데이터 결과 : "+new String(bb));
 //                    for (int i = 0; i < buf.length; i++)
 //                    {
 //                       // jeongLog.logD(i+"어허"+receiveData);
@@ -190,13 +206,12 @@ public class CsharpServerCommunication {
                  //  jeongLog.logD("최종 받은 데이터 결과 : "+receiveData); ;
 
 
-                  //  CommandParser.Parser(receiveData);
+                    CommandParser.Parser( Command );
+
 
                     byteArrayOutputStream.close();
                     out.close();
                     server.close();
-
-
 
                 }
                 catch (IOException e)
