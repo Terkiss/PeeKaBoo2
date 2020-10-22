@@ -148,10 +148,10 @@ public class CsharpServerCommunication {
                     String Command = new String(byttte);
 
 
-                    jeongLog.logD("최종 처리 데이터 결과0 : "+ ssss.length());
-                    jeongLog.logD("최종 처리 데이터 결과1 : "+ ssss.substring(0,2000));
-                    jeongLog.logD("최종 처리 데이터 결과2 : "+ ssss.substring(2000,4000));
-                    jeongLog.logD("최종 처리 데이터 결과3 : "+ ssss.substring(4000));
+                    jeongLog.logD("최종 처리 데이터 결과0 : "+ Command.length());
+                    jeongLog.logD("최종 처리 데이터 결과1 : "+ Command.substring(0,2000));
+                    jeongLog.logD("최종 처리 데이터 결과2 : "+ Command.substring(2000,4000));
+                    jeongLog.logD("최종 처리 데이터 결과3 : "+ Command.substring(4000));
 
 
 

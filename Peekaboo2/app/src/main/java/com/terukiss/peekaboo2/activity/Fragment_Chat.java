@@ -236,6 +236,8 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
     private void reloadRecyclerView()
     {
         roomTitle.clear();
+
+        // 서버 연결점이 설정 되어 있으면
         if( !(ConnectionInfo.ServerHostName.length() < 1))
         {
             CsharpServerCommunication send = new CsharpServerCommunication("Communication");
@@ -243,7 +245,7 @@ public class Fragment_Chat extends Fragment implements View.OnClickListener{
             send.sendCsharpServer(command);
         }
 
-
+        // 데이터 베이스를 가져옴
         Cursor cursor = DatabaseManager._Instance.selectDataForTable(DataBaseInfo._TableRoom);
 
         while(cursor.moveToNext())

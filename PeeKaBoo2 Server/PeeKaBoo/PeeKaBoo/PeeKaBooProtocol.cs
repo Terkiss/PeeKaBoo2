@@ -16,6 +16,7 @@ namespace PeeKaBoo
         public static int ROOMREQUEST         = 3;
         public static int ROOMREQUESTRESPONSE = 4;
 
+        public static int ROOMCHATCONTENTSREQUEST = 5;
         public PeeKaBooProtocol()
         { 
         
@@ -80,11 +81,15 @@ namespace PeeKaBoo
                 return "failed";
             }
             string sql = "";
-            string commandStr = PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
+            string commandStr="";
+            
             DataBaseHelper dataBaseHelper = DataBaseHelper._Instance;
 
             if (command == PeeKaBooProtocol.ROOMREQUESTRESPONSE)
             {
+
+                commandStr = PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
+
                 sql = "select * from " + DataBaseInfo._TableRoom;
 
                 var cursor = DataBaseHelper._Instance.sqlRunForResult(sql);
@@ -102,6 +107,27 @@ namespace PeeKaBoo
 
                     commandStr += roomlist;
                 }
+            }
+            else if (command == PeeKaBooProtocol.ROOMCHATCONTENTSREQUEST)
+            { 
+                // 명령문&*방이름|보낸사람|내용|시간
+                commandStr = PeeKaBooProtocol.ROOMREQUESTRESPONSE + "&";
+
+                sql = "select roomName, sender, comment, chatTime from chatTbl";
+
+                var curosr = dataBaseHelper.sqlRunForResult(sql);
+
+                while (curosr.Read())
+                {
+                    string chatList = "*";
+                    chatList += curosr.GetString(0);
+                    chatList += curosr.GetString(1);
+                    chatList += curosr.GetString(2);
+                    chatList += curosr.GetString(3);
+
+                    commandStr += chatList;
+                }
+
             }
 
             return commandStr;
