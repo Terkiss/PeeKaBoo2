@@ -7,6 +7,7 @@
     tools:context=".activity.ChatingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="404dp"
         android:layout_height="670dp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
@@ -24,23 +25,22 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="287dp"
-        android:layout_height="62dp"
+        android:layout_width="279dp"
+        android:layout_height="64dp"
+        android:background="@null"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
-        android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="71dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="70dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 </androidx.constraintlayout.widget.ConstraintLayout>

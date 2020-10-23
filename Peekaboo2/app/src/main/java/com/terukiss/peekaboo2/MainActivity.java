@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.terukiss.peekaboo2.activity.ChatingActivity;
 import com.terukiss.peekaboo2.activity.ContentBindActivity;
 import com.terukiss.peekaboo2.activity.UserProfile;
 import com.terukiss.peekaboo2.helper.Network.ConnectionInfo;
@@ -54,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                     public void run() {
-                        Intent intent = new Intent(getApplicationContext(), ContentBindActivity.class );
-
+                        //Intent intent = new Intent(getApplicationContext(), ContentBindActivity.class );
+                        Intent intent = new Intent(getApplicationContext(), ChatingActivity.class);
                         databaseManager = DatabaseManager._Instance.initialization(getApplicationContext());
 
                         // 마지막 연결 을 저장한 테이블에 있는지 검사 합니다.
