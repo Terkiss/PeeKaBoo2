@@ -10,13 +10,13 @@
         android:id="@+id/recyclerView"
         android:layout_width="404dp"
         android:layout_height="670dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/inputFilled"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/detailButton"
         android:layout_width="62dp"
         android:layout_height="63dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,20 +24,21 @@
         app:srcCompat="@drawable/drawable_floatbtton_03" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="279dp"
+        android:id="@+id/inputFilled"
+        android:layout_width="252dp"
         android:layout_height="64dp"
         android:background="@null"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
+        android:textAlignment="gravity"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/acceptButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/detailButton" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/acceptButton"
         android:layout_width="70dp"
         android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
