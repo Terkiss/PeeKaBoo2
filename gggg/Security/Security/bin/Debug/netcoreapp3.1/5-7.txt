@@ -1,0 +1,12 @@
+left=5
+right=7
+Ekey =5, Dkey =5
+Ekey =7, Dkey =7
+Ekey =11, Dkey =11
+Ekey =13, Dkey =13
+Ekey =17, Dkey =17
+Ekey =19, Dkey =19
+Ekey =23, Dkey =23
+Ekey =25, Dkey =-1
+Ekey =29, Dkey =5
+Ekey =31, Dkey =7

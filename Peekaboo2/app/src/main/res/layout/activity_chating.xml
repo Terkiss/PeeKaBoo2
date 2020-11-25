@@ -25,16 +25,17 @@
 
     <EditText
         android:id="@+id/inputFilled"
-        android:layout_width="252dp"
-        android:layout_height="64dp"
+        android:layout_width="224dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="16dp"
         android:background="@null"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:text=""
         android:textAlignment="gravity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/acceptButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toEndOf="@+id/detailButton" />
 
     <ImageView
@@ -44,4 +45,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

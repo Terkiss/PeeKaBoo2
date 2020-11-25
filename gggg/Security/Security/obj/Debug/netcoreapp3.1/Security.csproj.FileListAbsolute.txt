@@ -1,0 +1,13 @@
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.exe
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.deps.json
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.runtimeconfig.json
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.runtimeconfig.dev.json
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.dll
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\bin\Debug\netcoreapp3.1\Security.pdb
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.AssemblyInfoInputs.cache
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.AssemblyInfo.cs
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.csproj.CoreCompileInputs.cache
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.dll
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.pdb
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.genruntimeconfig.cache
+F:\Project\peekaboo2\PeeKaBoo2 Server\Security\Security\obj\Debug\netcoreapp3.1\Security.csprojAssemblyReference.cache

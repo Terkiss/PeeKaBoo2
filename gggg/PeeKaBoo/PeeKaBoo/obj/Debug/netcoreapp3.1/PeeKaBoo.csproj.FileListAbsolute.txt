@@ -1,0 +1,65 @@
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.exe
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.deps.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.dev.json
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfoInputs.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfo.cs
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CoreCompileInputs.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\EntityFramework.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Designer.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.Linq.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\testef6.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.xml
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CopyComplete
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Interop.dll
+F:\Project\Peekaboo2\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.exe
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Interop.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.deps.json
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.json
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.dev.json
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.pdb
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Designer.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.Linq.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\testef6.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.xml
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfoInputs.cache
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfo.cs
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CoreCompileInputs.cache
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CopyComplete
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
+C:\Users\Jeong\Desktop\PeeKaBoo2 Server\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.exe
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Interop.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.deps.json
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.json
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.runtimeconfig.dev.json
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\EntityFramework.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\SQLite.Designer.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.Linq.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\testef6.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\bin\Debug\netcoreapp3.1\System.Data.SQLite.EF6.xml
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csprojAssemblyReference.cache
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfoInputs.cache
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.AssemblyInfo.cs
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CoreCompileInputs.cache
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.csproj.CopyComplete
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.dll
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.pdb
+F:\Project\peekaboo2\gggg\PeeKaBoo\PeeKaBoo\obj\Debug\netcoreapp3.1\PeeKaBoo.genruntimeconfig.cache

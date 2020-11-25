@@ -1,2 +1,3 @@
 rootProject.name='PeeKaBoo2'
 include ':app'
+include ':smssender'

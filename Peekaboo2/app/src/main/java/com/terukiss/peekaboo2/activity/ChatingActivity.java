@@ -30,6 +30,6 @@ public class ChatingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         int id = v.getId();
 
-        if(id == R.id d)
+        //if(id == R.id d)
     }
 }
